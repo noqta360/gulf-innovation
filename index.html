@@ -165,6 +165,9 @@ select.input{appearance:none;-webkit-appearance:none;cursor:pointer;background-i
 .pcard.opening .pbody{animation:reveal .45s var(--ease) both}
 @keyframes reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .pbody .field{padding:15px 0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px;padding:14px;border-radius:16px;background:var(--paper)}
+.facts span{background:#fff;border:1px solid var(--line);border-radius:10px;padding:5px 12px;font-size:13.5px;line-height:1.6}
+.facts i{font-style:normal;color:var(--muted);margin-inline-end:6px;font-size:12px}
 .field.special{border-top:0;padding:15px 18px;margin:12px 0 6px;background:var(--lime-soft);border-radius:16px;border-inline-start:3px solid var(--lime)}
 .field.special .flabel::before{content:"سؤال خاص بهذا المشروع";display:block;font-size:11.5px;color:var(--olive);font-weight:700;margin-bottom:2px}
 .pcard .field.empty:not(.special) .flabel::after{content:"ناقص";font-size:11px;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:999px;padding:1px 8px;margin-inline-start:8px;vertical-align:1px}
@@ -356,263 +359,88 @@ const MARK_SVG = `<svg viewBox="0 0 572 570" fill="currentColor" aria-hidden="tr
    البيانات والأسئلة
    ===================================================================== */
 const YEARS = Array.from({length: 13}, (_, i) => String(2026 - i));
-const CITIES = ['الرياض','جدة','مكة المكرمة','المدينة المنورة','الدمام','الخبر','القصيم','أبها','تبوك','مدينة أخرى'];
-const SCOPE = ['الأعمال الإنشائية (العظم)','التشطيبات','الديكور الداخلي','التصميم الداخلي','الواجهات','الأعمال المعدنية','المنشآت الحديدية','تنسيق المواقع','التأثيث','إدارة المشروع','التنفيذ الكامل (تسليم مفتاح)'];
 const OFF = 'لا يُعرض';
 
 const STEPS = [
   { id:'start', title:'البداية', nav:'البداية',
-    lead:`يساعدنا هذا النموذج على إعداد محتوى دقيق لبروفايل ${CONFIG.client.name} الجديد. عبّأنا مسبقاً كل ما ورد في البروفايل الحالي، فلا يلزمكم إلا التأكيد أو التصحيح وإكمال الناقص.`,
-    perks:[['نحو 15 دقيقة','يمكن تقسيمها على أكثر من جلسة'],['أغلب الإجابات بنقرة','والبيانات المعروفة معبّأة مسبقاً'],['حفظ تلقائي','على هذا الجهاز حتى الإرسال']],
+    lead:`يساعدنا هذا النموذج على إعداد محتوى بروفايل ${CONFIG.client.name} الجديد. عبّأنا مسبقاً ما ورد في البروفايل الحالي، فلا يلزمكم إلا المراجعة وإكمال الناقص.`,
+    perks:[['نحو 5 دقائق','أسئلة قليلة ومختصرة'],['أغلب الإجابات بنقرة','والبيانات المعروفة معبّأة مسبقاً'],['حفظ تلقائي','يمكنكم الإكمال لاحقاً']],
     fields:[
-      {id:'contact_name', type:'text', label:'اسم من يعبّئ النموذج', req:true, block:true, half:true},
-      {id:'contact_phone', type:'tel', label:'رقم الجوال للتواصل', req:true, block:true, half:true, placeholder:'05XXXXXXXX'},
-      {id:'contact_role', type:'chips', label:'صفته في الشركة', options:['المالك','المدير العام','مدير المشاريع','مسؤول التسويق','أخرى'], other:'أخرى'},
-      {id:'contact_email', type:'email', label:'البريد الإلكتروني', hint:'لنرسل إليكم المسودة الأولى للمراجعة.', half:true, placeholder:'name@company.com'}
+      {id:'contact_name', type:'text', label:'الاسم', req:true, block:true, half:true, s:'الاسم'},
+      {id:'contact_phone', type:'tel', label:'رقم الجوال', req:true, block:true, half:true, placeholder:'05XXXXXXXX', s:'الجوال'}
     ]},
 
-  { id:'identity', title:'الهوية والكيان النظامي', nav:'الهوية النظامية',
-    lead:'نبدأ بتوحيد اسم الشركة وصفتها النظامية، فهذا أول ما يتحقق منه العميل.',
+  { id:'company', title:'بيانات الشركة', nav:'بيانات الشركة',
+    lead:'راجعوا البيانات المعبّأة وصحّحوا ما يلزم.',
     fields:[
-      {id:'entity', type:'chips', stack:true, req:true, s:'العلاقة مع ابتكار المحيط',
-       label:'ما العلاقة بين «جلف إينوفيشن» و«ابتكار المحيط»؟',
-       ctx:'<span class="tag">لماذا نسأل؟</span>في البروفايل الحالي السجل التجاري باسم <b>شركة جلف إينوفيشن</b>، أما شهادة الضريبة وإثبات العنوان الوطني ولوحة موقع مشروع صرة فباسم <b>شركة ابتكار المحيط المحدودة</b>، وثلاثة نصوص مشاريع تقول «Innovation Al-Muheet».',
-       options:['الكيان نفسه، وتغيّر اسمه من «ابتكار المحيط» إلى «جلف إينوفيشن»','شركتان قائمتان يملكهما المالك نفسه','«ابتكار المحيط» شركة سابقة لم تعد تعمل','أخرى'], other:'أخرى'},
-      {id:'old_name', type:'chips', req:true, s:'ذكر الاسم السابق', label:'هل نذكر الاسم السابق في البروفايل؟',
-       options:['نعم، بعبارة «سابقاً: ابتكار المحيط»','لا، نكتفي بالاسم الحالي'],
-       showIf:a=>String(a.entity||'').startsWith('الكيان نفسه')},
-      {id:'attrib', type:'chips', stack:true, req:true, s:'مشاريع ابتكار المحيط', label:'كيف نعرض المشاريع المنفذة باسم «ابتكار المحيط»؟',
-       options:['ضمن سابقة أعمال جلف إينوفيشن دون تمييز','ضمن سابقة الأعمال مع توضيح أنها نُفذت باسم ابتكار المحيط','نحذفها من البروفايل'],
-       showIf:a=>a.entity && !String(a.entity).startsWith('الكيان نفسه') && a.entity!=='أخرى'},
-      {id:'name_ar', type:'chips', req:true, s:'الاسم العربي', label:'الاسم العربي المعتمد', hint:'ورد الاسم في الملف الحالي بثلاث صيغ مختلفة.',
-       options:['جلف إينوفيشن (كما في السجل التجاري)','جلف اينوفيشن','جلف انوفيشن','صيغة أخرى'], other:'صيغة أخرى', pre:'جلف إينوفيشن (كما في السجل التجاري)'},
-      {id:'name_en', type:'chips', req:true, s:'الاسم الإنجليزي', label:'الاسم الإنجليزي المعتمد', hint:'ورد في الملف الحالي بأربع صيغ.',
-       options:['Gulf Innovation Contracting Co.','Gulf Innovation Company','Gulf Innovation Construction Company','صيغة أخرى'], other:'صيغة أخرى'},
-      {id:'cr', type:'text', label:'الرقم الوطني الموحد للسجل التجاري', pre:'7034918875', ltr:true, half:true, s:'الرقم الوطني الموحد'},
-      {id:'founded', type:'select', req:true, label:'سنة التأسيس', options:YEARS, half:true, hint:'شهادة السجل في الملف الحالي مؤرخة 2023.'},
-      {id:'exp_mode', type:'chips', stack:true, req:true, s:'صياغة الخبرة',
-       label:'يذكر البروفايل الحالي «أكثر من خمس سنوات خبرة». كيف نصوغ الخبرة؟',
-       options:['نذكر سنة التأسيس فقط','نذكر سنة التأسيس وخبرة المؤسس بالسنوات','نذكر الخبرة المتراكمة لفريق العمل بالسنوات']},
-      {id:'exp_years', type:'number', req:true, label:'عدد سنوات الخبرة', suffix:'سنة', half:true,
-       showIf:a=>a.exp_mode && a.exp_mode!=='نذكر سنة التأسيس فقط'}
+      {id:'name_ar', type:'text', label:'اسم الشركة بالعربية', pre:'جلف إينوفيشن', half:true, req:true, s:'الاسم بالعربية'},
+      {id:'name_en', type:'text', label:'اسم الشركة بالإنجليزية', pre:'Gulf Innovation', ltr:true, half:true, req:true, s:'الاسم بالإنجليزية'},
+      {id:'founded', type:'select', label:'سنة التأسيس', options:YEARS, half:true, req:true, s:'سنة التأسيس'},
+      {id:'staff', type:'number', label:'عدد الموظفين (تقريباً)', half:true, s:'عدد الموظفين'},
+      {id:'phone', type:'tel', label:'رقم التواصل', pre:'0550583636', half:true, req:true, s:'رقم التواصل'},
+      {id:'email', type:'email', label:'البريد الإلكتروني', half:true, req:true, placeholder:'info@', s:'البريد'},
+      {id:'website', type:'text', label:'الموقع الإلكتروني أو حسابات التواصل (اختياري)', ltr:true, placeholder:'https://', s:'الموقع والحسابات'},
+      {id:'address', type:'text', label:'العنوان', pre:'الرياض، حي الياسمين، شارع أنس بن مالك، فوق مجمع الربيع، الدور الرابع، مكتب 28', s:'العنوان'}
     ]},
 
-  { id:'contact', title:'التواصل والعنوان', nav:'التواصل',
-    lead:'لا يحتوي البروفايل الحالي إلا على عنوان المكتب. عبّأنا الرقمين الظاهرين على لوحة أحد مشاريعكم، فأكدوهما أو صححوهما.',
-    fields:[
-      {id:'phone1', type:'tel', req:true, label:'الرقم الرئيسي', pre:'0550583636', half:true},
-      {id:'phone2', type:'tel', label:'رقم إضافي', pre:'0538358081', half:true},
-      {id:'whatsapp', type:'chips', req:true, label:'رقم واتساب الأعمال', options:['الرقم الرئيسي','الرقم الإضافي','رقم آخر','لا نعرض واتساب'], other:'رقم آخر'},
-      {id:'email', type:'email', req:true, label:'البريد الإلكتروني للشركة', half:true, placeholder:'info@'},
-      {id:'website', type:'url', label:'الموقع الإلكتروني', half:true, placeholder:'https://'},
-      {id:'socials', type:'multi', label:'حسابات التواصل الاجتماعي', s:'حسابات التواصل', hint:'اختاروا الحسابات الموجودة، واكتبوا اسم المستخدم أو الرابط.',
-       options:['لينكدإن','إنستغرام','إكس','سناب شات','تيك توك','يوتيوب'], detail:'اسم المستخدم أو الرابط', ltrDetail:true},
-      {id:'city', type:'select', label:'المدينة', options:CITIES, pre:'الرياض', half:true},
-      {id:'district', type:'text', label:'الحي', pre:'الياسمين', half:true},
-      {id:'address', type:'text', label:'العنوان التفصيلي', pre:'شارع أنس بن مالك، فوق مجمع الربيع، الدور الرابع، مكتب 28'},
-      {id:'short_addr', type:'text', label:'العنوان الوطني المختصر', pre:'RAYA3610', ltr:true, half:true},
-      {id:'maps', type:'url', label:'رابط الموقع على خرائط Google', half:true, placeholder:'https://maps.app.goo.gl/…'}
-    ]},
-
-  { id:'docs', title:'الوثائق والاعتمادات', nav:'الوثائق',
-    lead:'يعرض البروفايل الحالي وثائق تسجيل فقط، وبعضها منتهٍ أو بالاسم السابق. حدّدوا ما يتوفر لديكم ليظهر في البروفايل الجديد.',
-    fields:[
-      {id:'docs', type:'multi', stack:true, label:'ما الوثائق المتوفرة لديكم؟', s:'الوثائق المتوفرة',
-       options:['شهادة تصنيف المقاولين','عضوية الهيئة السعودية للمقاولين','التسجيل في منصة مقاول','شهادة ISO','عضوية الغرفة التجارية','شهادة الزكاة','شهادة نطاقات (السعودة)','رخصة بلدي','تأهيل لدى جهات حكومية أو شركات كبرى'],
-       detailFor:{'شهادة تصنيف المقاولين':'المجال والدرجة','شهادة ISO':'رقم المعيار، مثل ISO 9001','تأهيل لدى جهات حكومية أو شركات كبرى':'اذكروا الجهات'}},
-      {id:'docs_update', type:'chips', stack:true, req:true, s:'وثائق ابتكار المحيط',
-       label:'شهادة الضريبة وإثبات العنوان في الملف الحالي باسم «ابتكار المحيط»، وإثبات العنوان انتهى في 22/02/2024. ماذا نفعل بهما؟',
-       options:['سنرسل نسخاً محدّثة بالاسم الحالي','نحذفهما من البروفايل']},
-      {id:'docs_show', type:'chips', stack:true, req:true, s:'طريقة عرض الوثائق', label:'كيف تُعرض الوثائق في البروفايل؟',
-       options:['صور الوثائق كاملة','شعارات الجهات مع أرقام الشهادات فقط','لا تُعرض']}
-    ]},
-
-  { id:'team', title:'الفريق والإمكانات', nav:'الفريق',
-    lead:'الأرقام تمنح البروفايل مصداقية أكبر من الأوصاف، وتكفي الأرقام التقريبية.',
-    fields:[
-      {id:'staff', type:'number', req:true, label:'إجمالي الموظفين', half:true},
-      {id:'engineers', type:'number', req:true, label:'المهندسون', half:true},
-      {id:'technicians', type:'number', label:'الفنيون والعمالة', half:true},
-      {id:'admins', type:'number', label:'الإداريون', half:true},
-      {id:'depts', type:'multi', req:true, label:'الأقسام القائمة فعلاً', s:'الأقسام',
-       hint:'سنعيد بناء الهيكل التنظيمي على أساسها، ففي الهيكل الحالي تكرار وأقسام ناقصة.',
-       options:['الإدارة الفنية','إدارة المشاريع','المكتب الفني','السلامة والصحة المهنية','ضبط الجودة','المشتريات','المالية','الموارد البشرية','الشؤون القانونية','العلاقات العامة','التصميم','المستودعات والمعدات']},
-      {id:'equip', type:'chips', req:true, label:'هل تملكون معدات خاصة؟', options:['نعم','لا، نستأجر عند الحاجة'], s:'المعدات'},
-      {id:'equip_list', type:'multi', label:'المعدات المملوكة', s:'قائمة المعدات', detail:'العدد',
-       options:['رافعات','مضخات خرسانة','خلاطات خرسانة','حفارات وشيولات','شدات معدنية','سقالات','مولدات كهرباء','معدات لحام وقص','شاحنات ونقل','ورشة حدادة','ورشة نجارة'],
-       showIf:a=>a.equip==='نعم'},
-      {id:'gm_years', type:'number', req:true, label:'سنوات خبرة المدير العام', suffix:'سنة', half:true},
-      {id:'gm_photo', type:'chips', req:true, label:'صورة احترافية للمدير العام', options:['متوفرة','غير متوفرة','لا نريد صورة'], half:true, s:'صورة المدير العام'},
-      {id:'gm_group', type:'text', label:'الاسم الصحيح للمجموعة الواردة في سيرة المدير العام', s:'اسم المجموعة في سيرة المدير',
-       hint:'وردت في البروفايل الحالي بصيغة «Rival Residential, Educational Companies Group» وهي غير واضحة.'}
-    ]},
-
-  { id:'services', title:'الخدمات والقطاعات', nav:'الخدمات',
-    lead:'حدّدنا مسبقاً الخدمات والقطاعات التي تظهر فعلاً في مشاريعكم. أضيفوا ما ينقص واحذفوا ما لا يلزم.',
+  { id:'services', title:'الخدمات', nav:'الخدمات',
+    lead:'حدّدنا الخدمات الظاهرة في مشاريعكم. أضيفوا ما ينقص أو احذفوا ما لا يلزم.',
     fields:[
       {id:'services', type:'multi', req:true, label:'خدماتكم', s:'الخدمات',
-       options:['الأعمال الإنشائية (العظم)','التشطيبات الداخلية','الديكور الداخلي','التصميم الداخلي','الواجهات','الأعمال المعدنية والمنشآت الحديدية','المستودعات والمباني الصناعية','تنسيق المواقع','إدارة المشاريع','الأعمال الكهروميكانيكية (MEP)','الترميم والصيانة','تسليم مفتاح','خدمة أخرى'], other:'خدمة أخرى',
-       pre:['الأعمال الإنشائية (العظم)','التشطيبات الداخلية','الديكور الداخلي','الواجهات','الأعمال المعدنية والمنشآت الحديدية','المستودعات والمباني الصناعية','تنسيق المواقع','إدارة المشاريع']},
-      {id:'main_service', type:'chips', req:true, label:'الخدمة التي تريدون أن تُعرفوا بها أولاً', s:'الخدمة الأولى',
-       optionsFrom:a=>(a.services||[]).filter(x=>x!=='خدمة أخرى').concat((a.services||[]).includes('خدمة أخرى') && a.services__o ? [a.services__o] : [])},
-      {id:'metal', type:'chips', stack:true, req:true, s:'عبارة الريادة في الأعمال المعدنية',
-       label:'يقول البروفايل الحالي إن الشركة «رائدة في الإنشاءات المعدنية». ما الصحيح؟',
-       options:['صحيح، ولدينا مشاريع تثبت ذلك','الأعمال المعدنية إحدى خدماتنا وليست الأولى','نحذف عبارة الريادة']},
-      {id:'sectors', type:'multi', req:true, label:'القطاعات التي عملتم فيها', s:'القطاعات',
-       hint:'ذكر البروفايل الحالي القطاع السياحي ولا يوجد فيه مشروع سياحي، فاختاروه إن كان لديكم مشروع فعلاً.',
-       options:['سكني','إداري ومكاتب','تجاري','صناعي ومستودعات','محطات الوقود','ديني (مساجد)','سياحي وفندقي','حكومي','تعليمي','صحي','قطاع آخر'], other:'قطاع آخر',
-       pre:['سكني','إداري ومكاتب','تجاري','صناعي ومستودعات','محطات الوقود']}
+       options:['الأعمال الإنشائية (العظم)','التشطيبات','الديكور الداخلي','التصميم الداخلي','الواجهات','الأعمال المعدنية','المستودعات والمباني الصناعية','تنسيق المواقع','إدارة المشاريع','خدمة أخرى'], other:'خدمة أخرى',
+       pre:['الأعمال الإنشائية (العظم)','التشطيبات','الديكور الداخلي','الواجهات','الأعمال المعدنية','المستودعات والمباني الصناعية','تنسيق المواقع','إدارة المشاريع']}
     ]},
 
   { id:'projects', title:'المشاريع', nav:'المشاريع', custom:'projects',
-    lead:'هذه مشاريعكم كما وردت في البروفايل الحالي. افتحوا كل مشروع، وأكملوا الحقول الموسومة «ناقص»، وأجيبوا عن السؤال الخاص به إن وُجد. يمكنكم استبعاد أي مشروع أو إضافة مشروع جديد.' },
+    lead:'هذه مشاريعكم كما وردت في البروفايل الحالي. افتحوا كل مشروع وأكّدوا بياناته وسنته، أو استبعدوه إن لم تريدوا عرضه.' },
 
-  { id:'clients', title:'العملاء والشركاء', nav:'العملاء', custom:'clients',
-    lead:'في صفحة «شركاؤنا» الحالية 14 شعاراً، أربعة منها فقط لها مشاريع في الملف. حدّدوا صفة كل جهة؛ فالعمل من الباطن مع شركة كبرى ميزة تستحق الذكر، لكن ذكرها «شريكاً» دون توضيح قد يُفهم خطأً.',
+  { id:'final', title:'اللمسات الأخيرة', nav:'اللمسات الأخيرة',
+    lead:'أسئلة أخيرة قصيرة، وكلها اختيارية عدا لغة البروفايل.',
     fields:[
-      {id:'clients_title', type:'chips', label:'عنوان هذه الصفحة في البروفايل الجديد', options:['عملاؤنا','شركاؤنا','عملاؤنا وشركاؤنا'], pre:'عملاؤنا', s:'عنوان الصفحة'},
-      {id:'add_clients', type:'multi', label:'جهات تظهر في مشاريعكم وليس لها شعار في الصفحة. أيّها نضيف؟', s:'جهات تُضاف',
-       options:['شركة صرة العقارية','بلاك كيوب للاستشارات الهندسية','أمان القابضة','مكتب فخر البناء (استشاري)','مكتب العربي للاستشارات الهندسية (استشاري)','جهة أخرى'], other:'جهة أخرى',
-       pre:['شركة صرة العقارية','بلاك كيوب للاستشارات الهندسية']}
-    ]},
-
-  { id:'extra', title:'محتوى إضافي', nav:'محتوى إضافي',
-    lead:'عناصر يتوقعها العميل في بروفايل شركة مقاولات، وتنقص البروفايل الحالي.',
-    fields:[
-      {id:'values', type:'multi', max:5, req:true, label:'قيم الشركة (حتى خمس قيم)', s:'القيم',
-       hint:'في البروفايل الحالي «Development» مكررة، و«Time» و«Cost» معايير أداء لا قيم.',
-       options:['الجودة','السلامة','الالتزام بالمواعيد','الشفافية','الالتزام','الابتكار','الكفاءة في التكلفة','الدقة','المسؤولية','التطوير المستمر','روح الفريق','رضا العميل'],
-       pre:['الجودة','الالتزام بالمواعيد','الشفافية','الالتزام','الابتكار']},
-      {id:'hse', type:'chips', stack:true, req:true, label:'السلامة والصحة المهنية', s:'السلامة',
-       options:['لدينا سياسة سلامة مكتوبة ومسؤول سلامة','نطبق إجراءات سلامة دون سياسة مكتوبة','لا نريد إبراز هذا الجانب']},
-      {id:'safe_hours', type:'number', label:'ساعات العمل دون إصابات (إن توفرت)', suffix:'ساعة', half:true,
-       showIf:a=>a.hse==='لدينا سياسة سلامة مكتوبة ومسؤول سلامة'},
-      {id:'qa', type:'chips', stack:true, req:true, label:'ضبط الجودة', s:'الجودة',
-       options:['لدينا إجراءات فحص واستلام موثقة','نتابع الجودة عبر المهندسين دون إجراءات موثقة','لا نريد إبراز هذا الجانب']},
-      {id:'letters', type:'chips', req:true, label:'هل لديكم خطابات شكر أو شهادات إنجاز من العملاء؟', s:'خطابات الشكر', options:['نعم','لا يوجد حالياً']},
-      {id:'letters_from', type:'text', label:'من أي جهات؟', showIf:a=>a.letters==='نعم', s:'جهات الخطابات'},
-      {id:'lang', type:'chips', stack:true, req:true, label:'لغة البروفايل الجديد', hint:'البروفايل الحالي بالإنجليزية فقط.', s:'لغة البروفايل',
-       options:['الإنجليزية فقط','العربية فقط','نسختان منفصلتان: عربية وإنجليزية','ملف واحد ثنائي اللغة']},
-      {id:'usage', type:'multi', req:true, label:'كيف سيُستخدم البروفايل؟', s:'استخدام البروفايل',
-       hint:'إن اخترتم واتساب فسنجهّز نسخة خفيفة الحجم إلى جانب نسخة الطباعة.',
-       options:['يُرسل PDF عبر البريد','يُرسل عبر واتساب','يُطبع','يُعرض في الاجتماعات','يُرفق في المناقصات']},
-      {id:'notes', type:'textarea', label:'أي ملاحظات أخرى', s:'ملاحظات عامة'}
-    ]},
-
-  { id:'files', title:'الملفات', nav:'الملفات',
-    lead:'لا يتسع النموذج للملفات الكبيرة، لذا نطلب رابط مجلد واحد يجمع الشعار والصور والوثائق.',
-    fields:[
-      {id:'folder', type:'url', label:'رابط المجلد', s:'رابط المجلد',
-       hint:'Google Drive أو OneDrive أو Dropbox أو WeTransfer. تأكدوا أن الرابط يسمح بالعرض لمن يملكه.', placeholder:'https://'},
-      {id:'folder_items', type:'multi', stack:true, label:'ما الذي يحتويه المجلد (أو سيحتويه)؟', s:'محتوى المجلد',
-       options:['شعار الشركة بصيغة مفتوحة (AI أو SVG أو PDF)','صورة المدير العام','صور المشاريع الأصلية بدقة عالية','صور التصاميم (الرندر)','الوثائق المحدّثة','شعارات العملاء','نصوص البروفايل الأصلية (Word)','خطابات الشكر وشهادات الإنجاز']},
-      {id:'folder_later', type:'chips', req:true, label:'المجلد غير جاهز الآن؟', s:'إرسال المجلد لاحقاً',
-       options:['سنرسل الرابط لاحقاً عبر واتساب','سنرسل الرابط لاحقاً عبر البريد'], showIf:a=>!a.folder}
+      {id:'lang', type:'chips', req:true, label:'لغة البروفايل الجديد', options:['العربية','الإنجليزية','العربية والإنجليزية'], s:'لغة البروفايل'},
+      {id:'extras', type:'multi', label:'ما الذي يتوفر لديكم لإضافته؟', s:'متوفر للإضافة',
+       options:['صور حديثة للمشاريع','شهادات واعتمادات','خطابات شكر من العملاء','صورة للمدير العام','شعارات عملاء آخرين']},
+      {id:'folder', type:'url', label:'رابط مجلد الملفات', s:'رابط المجلد', placeholder:'https://',
+       hint:'Google Drive أو WeTransfer، ويمكنكم إرساله لاحقاً عبر واتساب.'},
+      {id:'notes', type:'textarea', label:'أي ملاحظات أخرى', s:'ملاحظات'}
     ]},
 
   { id:'review', title:'المراجعة والإرسال', nav:'المراجعة والإرسال', custom:'review',
-    lead:'راجعوا إجاباتكم قبل الإرسال. يمكنكم تعديل أي قسم بالضغط على «تعديل».' }
+    lead:'راجعوا إجاباتكم قبل الإرسال، ويمكنكم تعديل أي قسم بالضغط على «تعديل».' }
 ];
 
-/* حقول كل مشروع */
+/* أسئلة كل مشروع */
+const hasData = p => { const d = byKey(p.key); return !!(d && d.facts && d.facts.value); };
+const isNew = p => String(p.key).startsWith('new_');
 const PF = [
   {id:'include', type:'chips', label:'هل يُعرض المشروع في البروفايل الجديد؟', options:['يُعرض', OFF], req:true, s:'العرض'},
-  {id:'name', type:'text', label:'اسم المشروع', req:true, half:true, s:'الاسم'},
-  {id:'client', type:'text', label:'العميل أو المالك', req:true, half:true, s:'العميل'},
-  {id:'city', type:'select', label:'المدينة', options:CITIES, req:true, half:true, s:'المدينة'},
-  {id:'district', type:'text', label:'الحي', req:true, half:true, s:'الحي'},
-  {id:'scope', type:'multi', label:'نطاق عملكم', options:SCOPE, req:true, s:'النطاق'},
-  {id:'details', type:'text', label:'مكونات المشروع', hint:'مثل: قبو + أرضي + 8 أدوار، أو عدد المداخل أو المستودعات.', s:'المكونات'},
-  {id:'role', type:'chips', label:'صفتكم في المشروع', options:['مقاول رئيسي','مقاول من الباطن'], req:true, s:'الصفة'},
-  {id:'main_contractor', type:'text', label:'اسم المقاول الرئيسي', showIf:p=>p.role==='مقاول من الباطن', s:'المقاول الرئيسي'},
-  {id:'value', type:'money', label:'قيمة العقد', suffix:'ريال', req:true, half:true, s:'القيمة'},
-  {id:'area', type:'number', label:'المساحة', suffix:'م²', req:true, half:true, s:'المساحة'},
-  {id:'area_type', type:'chips', label:'نوع المساحة', options:['مساحة الأرض','مسطح البناء'], req:true, half:true, s:'نوع المساحة'},
-  {id:'status', type:'chips', label:'حالة المشروع', options:['منجز','قيد التنفيذ'], req:true, half:true, s:'الحالة'},
-  {id:'year', type:'select', label:p=>p.status==='قيد التنفيذ'?'سنة البدء':'سنة الإنجاز', options:YEARS, req:true, half:true, s:'السنة'},
-  {id:'duration', type:'number', label:'مدة التنفيذ', suffix:'شهراً', half:true, s:'المدة'},
-  {id:'consultant', type:'text', label:'الاستشاري المشرف', s:'الاستشاري'},
-  {id:'notes', type:'textarea', label:'تصحيحات أو ملاحظات', s:'ملاحظات'}
+  {id:'name', type:'text', label:'اسم المشروع', req:true, showIf:isNew, s:'الاسم'},
+  {id:'ok', type:'chips', label:'هل البيانات أعلاه صحيحة؟', options:['صحيحة','تحتاج تعديلاً'], req:true, showIf:hasData, s:'البيانات'},
+  {id:'fix', type:'textarea', label:'اكتبوا التعديل', s:'التعديل', showIf:p=>p.ok==='تحتاج تعديلاً'},
+  {id:'info', type:'textarea', label:'أضيفوا ما يتوفر من بياناته', hint:'مثل: العميل، والقيمة، والمساحة، ونطاق العمل.', s:'بيانات مضافة', showIf:p=>!hasData(p)},
+  {id:'year', type:'select', label:'سنة الإنجاز', options:['قيد التنفيذ حالياً'].concat(YEARS), req:true, s:'السنة'}
 ];
 
-/* المشاريع المعبّأة مسبقاً من البروفايل الحالي */
+/* المشاريع كما وردت في البروفايل الحالي (للعرض فقط) */
 const PROJECTS = [
-  {key:'darco_admin',
-   pre:{name:'مبنى داركو الإداري', client:'داركو العقارية', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'قبو + أرضي + 8 أدوار متكررة', value:'12000000', area:'1150'},
-   note:'كُتبت القيمة في البروفايل الحالي «تقديرية». والمساحة 1,150 م² صغيرة لمبنى من عشرة مستويات إن كانت مسطح البناء، فتأكدوا منها ومن نوعها.',
-   q:[{id:'aman', s:'العلاقة مع أمان القابضة', label:'تحمل صور المبنى المنفذ عبارة «أمان القابضة – المقر الرئيسي». ما العلاقة بين داركو وأمان القابضة؟',
-       options:['داركو تابعة لأمان القابضة','المبنى صار مقراً لأمان القابضة بعد البيع أو التأجير','أخرى'], other:'أخرى'}]},
-  {key:'darco_interior',
-   pre:{name:'التصميم الداخلي لمقر داركو', client:'داركو العقارية'},
-   note:'النص الحالي لهذا المشروع عام ويصف أهداف العميل لا عملكم، وفيه كلمة «likely» التي تدل على نص منقول. نحتاج إلى بياناته الفعلية.',
-   q:[{id:'role', s:'دوركم', label:'ما دوركم في هذا المشروع؟', options:['التصميم فقط','التنفيذ فقط','التصميم والتنفيذ']},
-      {id:'same', s:'الموقع', label:'هل هذا المشروع هو الديكور الداخلي لمبنى داركو الإداري نفسه؟', options:['نعم','لا، موقع آخر']},
-      {id:'imgs', s:'عرض الصور', label:'في البروفايل صور تصميمية (رندر) وصور واقعية لا تتطابق. كيف نعرضها؟', options:['الصور الواقعية فقط','الاثنتان مع تمييز «تصميم» و«تنفيذ»']}]},
-  {key:'rimal2',
-   pre:{name:'مشروع الرمال 2 السكني', client:'داركو العقارية', district:'الرمال', value:'18000000', area:'6400'},
-   q:[{id:'entr', s:'قيمة المداخل', label:'هل قيمة مداخل الرمال 2 (850,000 ريال) داخلة ضمن قيمة هذا المشروع؟', options:['داخلة ضمنها','عقد منفصل']},
-      {id:'r1', s:'الرمال 1', label:'يذكر البروفايل أن «الرمال 1» مشروع منجز، ولا صفحة له. هل نضيفه مشروعاً مستقلاً؟', options:['نعم، وسأضيف بياناته في آخر القائمة','لا، يكفي ذكر مداخله']}]},
-  {key:'rimal1_entr',
-   pre:{name:'مداخل مباني الرمال 1', client:'داركو العقارية', district:'الرمال', scope:['التشطيبات','الديكور الداخلي'], details:'5 مداخل', value:'550000'}},
-  {key:'rimal2_entr',
-   pre:{name:'مداخل مباني الرمال 2 وتنسيق الموقع', client:'داركو العقارية', district:'الرمال', scope:['التشطيبات','الديكور الداخلي','تنسيق المواقع'], details:'6 مداخل', value:'850000'}},
-  {key:'qurtuba_entr',
-   pre:{name:'مداخل مباني قرطبة', scope:['التصميم الداخلي','التشطيبات','الديكور الداخلي']},
-   note:'العنوان يذكر «قرطبة» والنص يقول إن المشروع في حي الرمال، فاكتبوا الحي الصحيح. وتظهر في الصور علامة داركو، لكن النص لا يذكر العميل.'},
-  {key:'rawabi',
-   pre:{name:'مبنى الروابي المكتبي', client:'شركة إنماء الروابي', district:'النموذجية', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], value:'3000000', area:'700', consultant:'مكتب العربي للاستشارات الهندسية'},
-   note:'تظهر في إحدى صور المشروع أعمال بتاريخ أكتوبر 2023.'},
-  {key:'villa',
-   pre:{name:'فيلا سكنية في حي الملك عبدالله', district:'الملك عبدالله'},
-   note:'النص المرافق لهذه الفيلا في البروفايل الحالي يخص مشروعاً آخر (مسجد الجاسر)، فلا توجد للفيلا أي بيانات. أكملوها هنا.'},
-  {key:'jasser', include:'',
-   pre:{name:'مسجد الجاسر', district:'السعادة', area:'600'},
-   note:'ورد هذا المشروع نصاً في صفحة الفيلا، دون صور. قرّروا هل يُعرض.',
-   q:[{id:'photos', s:'الصور', label:'هل تتوفر صور لهذا المشروع؟', options:['نعم، سأضعها في مجلد الملفات','لا تتوفر']}]},
-  {key:'western',
-   pre:{name:'مبنى تجاري على الطريق الدائري الغربي', client:'مجموعة زيد الحسين', district:'السويدي', scope:['التنفيذ الكامل (تسليم مفتاح)'], value:'3500000', area:'1300'},
-   note:'عنوانه الحالي «Western Ring Road» يوحي بمشروع طرق، فاقترحنا الاسم أعلاه. والنص يقول إن المشروع قيد التنفيذ، بينما تُظهر الصور مبنى مكتملاً.'},
-  {key:'aknan',
-   pre:{name:'مشروع أكنان', district:'قرطبة', scope:['الأعمال الإنشائية (العظم)','الواجهات','الأعمال المعدنية'], value:'7500000', area:'1200', status:'منجز'},
-   q:[{id:'type', s:'نوع المبنى', label:'عنوانه الحالي «Aknan Residential». ما نوع المبنى؟', options:['سكني','تجاري أو مكتبي','متعدد الاستخدامات']}]},
-  {key:'shaddi',
-   pre:{name:'محطة وقود الشدي', client:'محطات لتر (LITER)', district:'الحمراء', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'أرضي + دوران (إدارة وسوق وخدمات)', value:'3600000', area:'600'}},
-  {key:'shohadaa',
-   pre:{name:'محطة وقود الشهداء'},
-   note:'هذا المشروع صور فقط بلا أي بيانات، وصوره موضوعة بين صفحتي محطة الشدي.',
-   q:[{id:'sep', s:'استقلال المشروع', label:'هل هذه الصور لمشروع مستقل فعلاً؟', options:['نعم، مشروع مستقل','لا، الصور لمحطة الشدي']}]},
-  {key:'blackcube',
-   pre:{name:'مكتب بلاك كيوب للاستشارات الهندسية', client:'بلاك كيوب للاستشارات الهندسية', district:'العليا', scope:['التشطيبات','الديكور الداخلي','التأثيث'], value:'570000', area:'200'}},
-  {key:'surra',
-   pre:{name:'مستودعات صرة', client:'شركة صرة العقارية', district:'السلي', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'مجمع مستودعات ومبانٍ تجارية ومكتبية ومبنى سكني', value:'122000000', area:'302000', consultant:'مكتب فخر البناء للاستشارات الهندسية (Pride Build)'},
-   note:'أكبر مشاريعكم، ويعادل نحو 69% من مجموع القيم المذكورة في البروفايل، لذا نحتاج إلى دقة بياناته.',
-   q:[{id:'val', s:'طبيعة القيمة', label:'هل 122,000,000 ريال قيمة عقدكم أم القيمة الإجمالية للمشروع؟', hint:'إن كانت القيمة الإجمالية، فاكتبوا قيمة عقدكم في حقل «قيمة العقد» أدناه.', options:['قيمة عقدنا','القيمة الإجمالية للمشروع']},
-      {id:'fuel', s:'محطة الوقود', label:'لوحة الموقع تذكر «مشروع مستودعات ومحطة وقود». هل المحطة ضمن نطاق عملكم؟', options:['نعم','لا']}]},
-  {key:'habib',
-   pre:{name:'مستودعات الحبيب', client:'أحمد الحبيب', district:'النور', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'أرضي + مبنى إداري', value:'5000000', area:'10000'},
-   note:'كُتب الحي في البروفايل «AlNor»، فتأكدوا من اسمه العربي الصحيح.',
-   q:[{id:'consent', s:'ذكر اسم العميل', label:'العميل فرد. هل يوافق على ذكر اسمه في البروفايل؟', options:['نعم','لا، نكتفي بعبارة «عميل خاص»']}]}
+  {key:'darco_admin', name:'مبنى داركو الإداري', facts:{client:'داركو العقارية', scope:'أعمال الخرسانة والتشطيبات · قبو + أرضي + 8 أدوار', value:12000000, area:1150}},
+  {key:'darco_interior', name:'التصميم الداخلي لمقر داركو', facts:{client:'داركو العقارية'}},
+  {key:'rimal2', name:'مشروع الرمال 2 السكني', facts:{client:'داركو العقارية', place:'حي الرمال', value:18000000, area:6400}},
+  {key:'rimal1_entr', name:'مداخل مباني الرمال 1', facts:{client:'داركو العقارية', place:'حي الرمال', scope:'تشطيب وديكور 5 مداخل', value:550000}},
+  {key:'rimal2_entr', name:'مداخل مباني الرمال 2', facts:{client:'داركو العقارية', place:'حي الرمال', scope:'تشطيب وديكور 6 مداخل وتنسيق الموقع', value:850000}},
+  {key:'qurtuba_entr', name:'مداخل مباني قرطبة', facts:{scope:'تصميم وتنفيذ داخلي'}},
+  {key:'rawabi', name:'مبنى الروابي المكتبي', facts:{client:'إنماء الروابي', place:'حي النموذجية', scope:'أعمال الخرسانة والتشطيبات', value:3000000, area:700}},
+  {key:'villa', name:'فيلا سكنية في حي الملك عبدالله', facts:{place:'حي الملك عبدالله'}},
+  {key:'jasser', name:'مسجد الجاسر', include:'', facts:{place:'حي السعادة', area:600}},
+  {key:'western', name:'مبنى تجاري على الطريق الدائري الغربي', facts:{client:'مجموعة زيد الحسين', place:'حي السويدي', scope:'تنفيذ كامل الأعمال', value:3500000, area:1300}},
+  {key:'aknan', name:'مشروع أكنان', facts:{place:'حي قرطبة', scope:'الإنشاء وأعمال الواجهة المعدنية', value:7500000, area:1200}},
+  {key:'shaddi', name:'محطة وقود الشدي', facts:{client:'لتر', place:'حي الحمراء', scope:'أعمال الخرسانة والتشطيبات · أرضي + دوران', value:3600000, area:600}},
+  {key:'shohadaa', name:'محطة وقود الشهداء', facts:{}},
+  {key:'blackcube', name:'مكتب بلاك كيوب للاستشارات الهندسية', facts:{client:'بلاك كيوب', place:'حي العليا', scope:'تشطيب وديكور وتأثيث', value:570000, area:200}},
+  {key:'surra', name:'مستودعات صرة', facts:{client:'صرة العقارية', place:'حي السلي', scope:'أعمال الخرسانة والتشطيبات', value:122000000, area:302000}},
+  {key:'habib', name:'مستودعات الحبيب', facts:{client:'أحمد الحبيب', place:'حي النور', scope:'أعمال الخرسانة والتشطيبات', value:5000000, area:10000}}
 ];
-
-const LOGOS = [
-  {id:'darco', name:'داركو (DARCO)', pre:'عميل مباشر'},
-  {id:'liter', name:'لتر (LITER)', pre:'عميل مباشر'},
-  {id:'zaid', name:'مجموعة زيد الحسين', pre:'عميل مباشر'},
-  {id:'enma', name:'إنماء الروابي', pre:'عميل مباشر'},
-  {id:'alargan', name:'الأرجان العالمية العقارية'},
-  {id:'scope', name:'سكوب إنترناشونال'},
-  {id:'jomaih', name:'الجميح القابضة'},
-  {id:'united', name:'شركة المقاييس المتحدة'},
-  {id:'nesma', name:'نسما (NESMA)'},
-  {id:'irf', name:'مصنع الراتنجات الصناعية'},
-  {id:'aldrees', name:'الدريس'},
-  {id:'mazaya', name:'مزايا (MAZAYA)'},
-  {id:'seal', name:'الشعار الدائري الأحمر (ISI)'},
-  {id:'etihad', name:'الاتحاد للمقاولات'}
-];
-const LOGO_OPTS = ['عميل مباشر','عملنا معه من الباطن','مورّد أو شريك','يُحذف'];
-
-
+const LOGOS = [], LOGO_OPTS = [];
 
 /* =====================================================================
    الحالة والحفظ
@@ -623,7 +451,7 @@ const byKey = k => PROJECTS.find(p => p.key === k);
 function defaults(){
   const a = {};
   STEPS.forEach(s => (s.fields||[]).forEach(f => { if (f.pre !== undefined) a[f.id] = clone(f.pre); }));
-  a.projects = PROJECTS.map(p => Object.assign({key:p.key, include: p.include !== undefined ? p.include : 'يُعرض', city:'الرياض'}, clone(p.pre)));
+  a.projects = PROJECTS.map(p => ({key:p.key, include: p.include !== undefined ? p.include : 'يُعرض'}));
   a.logos = {};
   LOGOS.forEach(l => { if (l.pre) a.logos[l.id] = l.pre; });
   return a;
@@ -797,23 +625,31 @@ function badgeHTML(pr){
   const m = projMissing(pr);
   return m ? `<span class="badge">ينقصه ${plural(m,'بيان واحد','بيانان','بيانات','بياناً')}</span>` : `<span class="badge ok">مكتمل</span>`;
 }
+const titleOf = pr => isNew(pr) ? (pr.name || 'مشروع جديد') : (byKey(pr.key) || {}).name;
+const subOf = pr => { const f = (byKey(pr.key) || {}).facts || {}; return [f.client, f.place].filter(Boolean).join(' · '); };
+function factsList(pr){
+  const f = (byKey(pr.key) || {}).facts || {};
+  return [['العميل', f.client], ['الموقع', f.place], ['النطاق', f.scope], ['القيمة', f.value ? num(f.value) + ' ريال' : ''], ['المساحة', f.area ? num(f.area) + ' م²' : '']].filter(x => x[1]);
+}
 function projectHTML(pr, i){
   const def = byKey(pr.key) || {};
   const open = UI.open.has(pr.key), off = pr.include===OFF;
-  const sub = [pr.client, pr.district].filter(Boolean).join(' · ');
+  const sub = subOf(pr);
   let body = '';
   if(open){
     const base = `projects|${i}|`;
     let fields = `<div class="fgrid">${fieldHTML(PF[0], pr, base, true)}</div>`;
-    if(!off) fields += (def.note?`<div class="ctx"><span class="tag">ملاحظة</span>${def.note}</div>`:'')
-        + (def.q||[]).map(q => fieldHTML(qField(q), pr, base, true)).join('')
-        + `<div class="fgrid">${PF.slice(1).map(f => fieldHTML(f, pr, base, true)).join('')}</div>`;
+    if(!off){
+      const fl = factsList(pr);
+      if(fl.length) fields += `<div class="facts">${fl.map(x => `<span><i>${x[0]}</i>${esc(x[1])}</span>`).join('')}</div>`;
+      fields += `<div class="fgrid">${PF.slice(1).map(f => fieldHTML(f, pr, base, true)).join('')}</div>`;
+    }
     body = `<div class="pbody">${fields}${def.key?'':`<button type="button" class="btn danger" data-del="${esc(pr.key)}">حذف هذا المشروع</button>`}</div>`;
   }
   return `<div class="pcard ${open?'open':''} ${off?'off':''} ${UI.opening===pr.key?'opening':''}" data-card="${esc(pr.key)}">
     <button type="button" class="phead" data-toggle="${esc(pr.key)}" aria-expanded="${open}">
       <span class="pidx">${pad(i+1)}</span>
-      <span class="ptxt"><span class="pn">${esc(pr.name||'مشروع جديد')}</span><span class="pc">${esc(sub||'—')}</span></span>
+      <span class="ptxt"><span class="pn">${esc(titleOf(pr))}</span><span class="pc">${esc(sub||'—')}</span></span>
       ${badgeHTML(pr)}<span class="chev"></span>
     </button>${body}</div>`;
 }
@@ -849,22 +685,18 @@ function compile(){
     const sec = {si, title:s.title, rows:[]};
     if(s.custom==='projects'){
       sec.projects = A.projects.map(pr => {
-        const def = byKey(pr.key) || {}; const pre = (PRE.projects.find(x=>x.key===pr.key)) || {};
-        if(pr.include===OFF) return {name:pr.name, off:true};
-        const items = [];
+        const name = titleOf(pr);
+        if(pr.include===OFF) return {name, off:true};
+        const items = factsList(pr).map(x => ({label:x[0], val:x[1]}));
         if(isEmpty(pr.include)){ items.push({label:'العرض', val:'', miss:true}); missing++; }
-        (def.q||[]).forEach(q => { const f=qField(q); const v=pr[f.id]; const e=isEmpty(v); if(e) missing++; items.push({label:q.s, val:e?'':fmt(f,v,pr), miss:e, q:true}); });
         PF.forEach(f => {
           if(f.id==='include' || f.id==='name' || !visible(f,pr)) return;
           const v = pr[f.id], e = isEmpty(v);
           if(e && f.req) missing++;
-          let was = null;
-          if(pre[f.id]!==undefined && !same(pre[f.id], v)){ was = fmt(f, pre[f.id], pre) || '—'; changed++; }
-          if(!e || f.req) items.push({label:f.s, val:e?'':fmt(f,v,pr), miss:e && f.req, was});
+          if(f.id==='ok' && v==='تحتاج تعديلاً') changed++;
+          if(!e || f.req) items.push({label:f.s, val:e?'':fmt(f,v,pr), miss:e && f.req});
         });
-        let nameWas = null;
-        if(pre.name!==undefined && !same(pre.name, pr.name)){ nameWas = pre.name; changed++; }
-        return {name:pr.name||'مشروع بلا اسم', nameWas, items, miss:projMissing(pr), isNew:!def.key};
+        return {name, items, miss:projMissing(pr), isNew:isNew(pr)};
       });
     }
     if(s.custom==='clients'){
@@ -883,7 +715,7 @@ function compile(){
     secs.push(sec);
   });
   const shown = A.projects.filter(p => p.include!==OFF);
-  const total = shown.reduce((t,p) => t + (Number(p.value)||0), 0);
+  const total = shown.reduce((t,p) => t + (Number(((byKey(p.key)||{}).facts||{}).value)||0), 0);
   return {secs, missing, changed, shown:shown.length, total, at:new Date()};
 }
 
@@ -896,7 +728,7 @@ function reviewHTML(){
     <div class="stat hi"><b>${r.shown}</b><span>المشاريع المعروضة</span></div>
     <div class="stat"><b>${num(r.total)}</b><span>مجموع قيمها (ريال)</span></div>
     <div class="stat"><b>${r.missing}</b><span>أسئلة بلا إجابة</span></div>
-    <div class="stat"><b>${r.changed}</b><span>بيانات عدّلتموها</span></div></div>`;
+    <div class="stat"><b>${r.changed}</b><span>تعديلات طلبتموها</span></div></div>`;
   const notice = r.missing
     ? `<div class="notice warn">عدد الأسئلة التي لم تُجب: <b>${r.missing}</b>. يمكنكم الإرسال الآن وإكمالها لاحقاً معنا، لكن اكتمالها يختصر وقت التنفيذ.</div>`
     : `<div class="notice">أجبتم عن جميع الأسئلة الأساسية. شكراً لكم.</div>`;
@@ -936,11 +768,11 @@ function emailHTML(r, compact){
     + `<tr><td style="background:${ink};color:#fff;padding:22px 26px;border-bottom:4px solid ${br}"><div style="font-size:13px;font-weight:bold;color:${br}">◆ ${esc(CONFIG.agency.name)} · نموذج محتوى البروفايل</div>`
     + `<div style="font-size:23px;font-weight:bold;margin-top:4px">${esc(CONFIG.client.name)}</div><div style="font-size:12px;color:#A9ACA4;margin-top:4px">${esc(when)}</div></td></tr>`
     + `<tr><td style="padding:20px 26px 6px"><table width=100% cellpadding=0 cellspacing=0 style="border:1px solid #E4E4DC;background:#FCFCFA"><tr><td style="padding:14px 16px">`
-    + `<div style="font-size:12px;color:${mu}">مقدّم الإجابات</div><div style="font-size:16px;font-weight:bold">${esc(A.contact_name||'—')}${A.contact_role?` <font color=${mu} size=2>— ${esc(fmt(STEPS[0].fields[2], A.contact_role, A))}</font>`:''}</div>`
-    + `<div style="margin-top:4px"><a href="tel:${esc(A.contact_phone||'')}" style="color:${ol};text-decoration:none">${esc(A.contact_phone||'')}</a>${A.contact_email?` &nbsp;·&nbsp; <a href="mailto:${esc(A.contact_email)}" style="color:${ol};text-decoration:none">${esc(A.contact_email)}</a>`:''}</div>`
+    + `<div style="font-size:12px;color:${mu}">مقدّم الإجابات</div><div style="font-size:16px;font-weight:bold">${esc(A.contact_name||'—')}</div>`
+    + `<div style="margin-top:4px"><a href="tel:${esc(A.contact_phone||'')}" style="color:${ol};text-decoration:none">${esc(A.contact_phone||'')}</a>${A.email?` &nbsp;·&nbsp; <a href="mailto:${esc(A.email)}" style="color:${ol};text-decoration:none">${esc(A.email)}</a>`:''}</div>`
     + `</td></tr></table></td></tr>`
     + `<tr><td style="padding:10px 26px 4px"><table width=100% cellpadding=0 cellspacing=0 style="border-collapse:collapse;text-align:center"><tr>`
-    + cell(r.shown,'مشاريع معروضة',true) + cell(num(r.total),'مجموع القيم (ريال)') + cell(`<font color=${r.missing?wn:ol}>${r.missing}</font>`,'أسئلة بلا إجابة') + cell(r.changed,'بيانات عدّلها العميل')
+    + cell(r.shown,'مشاريع معروضة',true) + cell(num(r.total),'مجموع القيم (ريال)') + cell(`<font color=${r.missing?wn:ol}>${r.missing}</font>`,'أسئلة بلا إجابة') + cell(r.changed,'تعديلات طلبها العميل')
     + `</tr></table></td></tr>`;
   r.secs.forEach((s, n) => {
     h += `<tr><td style="padding:18px 26px 0"><div style="font-size:15px;font-weight:bold;color:${ink};border-bottom:3px solid ${br};padding-bottom:5px;margin-bottom:4px">${pad(n+1)} · ${esc(s.title)}</div>`;
@@ -1002,7 +834,7 @@ function emailjsBody(r, html){
     template_params:{
       subject:`نموذج البروفايل: ${CONFIG.client.name} — ${A.contact_name||''}`,
       company:CONFIG.client.name, contact_name:A.contact_name||'', contact_phone:A.contact_phone||'',
-      reply_to:A.contact_email||CONFIG.agency.email, report_html:html }};
+      reply_to:A.email||CONFIG.agency.email, report_html:html }};
 }
 async function sendEmailJS(r){
   let body = emailjsBody(r, emailHTML(r,false));
@@ -1017,9 +849,9 @@ async function sendWeb3(r){
     access_key:CONFIG.web3forms.accessKey,
     subject:`نموذج البروفايل: ${CONFIG.client.name} — ${A.contact_name||''}`,
     from_name:`${CONFIG.agency.name} — نموذج البروفايل`,
-    replyto:A.contact_email||undefined,
+    replyto:A.email||undefined,
     'مقدّم الإجابات':`${A.contact_name||''} — ${A.contact_phone||''}`,
-    'الملخص':`مشاريع معروضة: ${r.shown} · مجموع القيم: ${num(r.total)} ريال · أسئلة بلا إجابة: ${r.missing} · بيانات معدّلة: ${r.changed}`
+    'الملخص':`مشاريع معروضة: ${r.shown} · مجموع القيم: ${num(r.total)} ريال · أسئلة بلا إجابة: ${r.missing} · تعديلات مطلوبة: ${r.changed}`
   }, plainFields(r));
   const res = await fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json', Accept:'application/json'}, body:JSON.stringify(payload)});
   const j = await res.json().catch(()=>({}));
@@ -1136,7 +968,8 @@ function validate(){
     if(el) el.classList.toggle('invalid', bad);
     if(bad) ok = false;
   });
-  if(A.contact_email && UI.cur===0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(A.contact_email)){ toast('صيغة البريد الإلكتروني غير صحيحة'); return false; }
+  const badMail = (s.fields||[]).find(f => f.type==='email' && visible(f,A) && A[f.id] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(A[f.id]));
+  if(badMail){ const el = stage.querySelector(`[data-fid="${badMail.id}"]`); if(el){ el.classList.add('invalid'); scrollToEl(el, 40); } toast('صيغة البريد الإلكتروني غير صحيحة'); return false; }
   if(!ok){ toast('أكملوا الحقول المطلوبة للمتابعة'); const f = stage.querySelector('.invalid'); if(f){ scrollToEl(f, 40); const inp=f.querySelector('.input'); if(inp) setTimeout(()=>inp.focus({preventScroll:true}), 350); } }
   return ok;
 }
@@ -1144,7 +977,7 @@ async function go(i){
   if(UI.busy) return;
   i = Math.max(0, Math.min(STEPS.length-1, i));
   if(i === UI.cur && stage.innerHTML && !UI.done) return;
-  if(i > UI.cur && UI.cur===0 && !validate()) return;
+  if(i > UI.cur && !validate()) return;
   UI.busy = true;
   const card = document.getElementById('card');
   card.classList.add('leaving');
@@ -1227,7 +1060,7 @@ stage.addEventListener('click', e => {
   }
   if(e.target.closest('#addp')){
     const key = 'new_' + Date.now();
-    A.projects.push({key, include:'يُعرض', city:'الرياض'}); UI.open.clear(); UI.open.add(key); UI.opening = key; save();
+    A.projects.push({key, include:'يُعرض'}); UI.open.clear(); UI.open.add(key); UI.opening = key; save();
     const y = window.scrollY; render(false); keepScroll(y);
     const card = stage.querySelector(`[data-card="${key}"]`);
     if(card){ requestAnimationFrame(()=>scrollToEl(card, 64)); const f=card.querySelector('[data-fid="name"] .input'); if(f) setTimeout(()=>f.focus({preventScroll:true}), 700); }
@@ -1240,8 +1073,8 @@ function refreshCard(i, fw, path){
   const pr = A.projects[i], card = stage.querySelector(`[data-card="${CSS.escape(pr.key)}"]`);
   if(!card) return;
   card.querySelector('.badge').outerHTML = badgeHTML(pr);
-  card.querySelector('.pn').textContent = pr.name || 'مشروع جديد';
-  card.querySelector('.pc').textContent = [pr.client, pr.district].filter(Boolean).join(' · ') || '—';
+  card.querySelector('.pn').textContent = titleOf(pr);
+  card.querySelector('.pc').textContent = subOf(pr) || '—';
   if(fw && fw.dataset.req==='1' && !fw.classList.contains('special')) fw.classList.toggle('empty', isEmpty(getP(path)));
   const sum = stage.querySelector('.ptools'); if(sum) sum.innerHTML = projectsSummary();
 }
