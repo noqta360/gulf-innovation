@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#16181B">
+<title>نموذج محتوى البروفايل — جلف إينوفيشن | نقطة 360</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%2316181B%22/%3E%3Cg%20transform%3D%22translate%2813%2013%29%20scale%280.0664%29%22%3E%3Cpath%20fill%3D%22%23C8DA2B%22%20fill-rule%3D%22evenodd%22%20d%3D%22M-0%20461.5L0%20353L142.2%20353L284.5%20353L196.2%20264.7L108%20176.5L196.5%2088L285%20-0.5L373.2%2087.8L461.5%20176L373.7%20263.8C325.5%20312%20286%20351.9%20286%20352.3C286%20352.7%20329.5%20352.9%20382.8%20352.8L479.5%20352.5L488%20350.1C533%20337.7%20563.3%20303.5%20570.5%20257C571.6%20249.5%20571.8%20257.1%20571.9%20320.6C572%20395.3%20571.4%20411.1%20567.9%20428.3C563.3%20451%20552.3%20476.5%20539.2%20495C531%20506.5%20514.3%20524.1%20503.5%20532.6C481.5%20549.7%20456.6%20561.2%20428.2%20567.2L417.5%20569.5L208.8%20569.8L-0%20570L-0%20461.5Z%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* Lenis (MIT) */
+html.lenis,html.lenis body{height:auto}
+.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+.lenis [data-lenis-prevent]{overscroll-behavior:contain}
+
+:root{
+  --lime:#C8DA2B; --lime-2:#B7C91F; --lime-soft:#F3F6DC; --olive:#5B6A00;
+  --ink:#16181B; --ink-2:#24272B; --paper:#F4F4EF; --card:#FFFFFF; --line:#E4E4DC; --line-2:#D6D6CC;
+  --muted:#6D7068; --sand:#F8F3EA; --sand-ink:#6A4A23; --warn:#B0531C; --warn-soft:#FBEEE3;
+  --r:22px; --head:64px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --font:"IBM Plex Sans Arabic", Tahoma, "Segoe UI", Arial, sans-serif;
+  --num:"Playfair Display", Georgia, "Times New Roman", serif;
+}
+*{box-sizing:border-box}
+html{scrollbar-width:thin;scrollbar-color:#C9CBBF transparent;-webkit-text-size-adjust:100%}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#CFD1C5;border-radius:10px;border:3px solid var(--paper)}
+::-webkit-scrollbar-track{background:transparent}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:15.5px;line-height:1.8;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--lime);color:var(--ink)}
+a{color:var(--olive)}
+.num{font-family:var(--num);font-feature-settings:"lnum"}
+
+/* ───────── Header ───────── */
+.top{position:sticky;top:0;z-index:40;background:var(--ink);color:#fff;transition:box-shadow .3s var(--ease)}
+.top.scrolled{box-shadow:0 10px 30px rgba(22,24,27,.18)}
+.top-in{max-width:1220px;margin:0 auto;height:var(--head);padding:0 26px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:center;color:var(--lime);flex:none}
+.logo svg{height:32px;width:auto;display:block}
+.logo img{height:34px;width:auto;display:block}
+.top-title{color:#A9ACA4;font-size:13.5px;border-inline-start:1px solid #33363A;padding-inline-start:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-title b{color:#fff;font-weight:600}
+.save{margin-inline-start:auto;font-size:12.5px;color:#A9ACA4;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.save .dot{width:7px;height:7px;transform:rotate(45deg);background:#4A4D52;transition:background .4s}
+.save.on .dot{background:var(--lime)}
+.prog{height:3px;background:#2C2F33}
+.prog i{display:block;height:100%;width:0;background:var(--lime);transition:width .7s var(--ease)}
+
+/* ───────── Layout ───────── */
+.wrap{max-width:1220px;margin:0 auto;padding:34px 26px 40px;display:grid;grid-template-columns:262px minmax(0,1fr);gap:34px;align-items:start}
+.side{position:sticky;top:calc(var(--head) + 30px)}
+.rail{list-style:none;margin:0;padding:0;position:relative}
+.rail::before{content:"";position:absolute;inset-inline-start:22px;top:18px;bottom:18px;width:1px;background:var(--line-2)}
+.rail li{position:relative}
+.rail button{all:unset;cursor:pointer;display:flex;gap:13px;align-items:center;width:100%;padding:7px 10px;border-radius:12px;color:var(--muted);font-size:14.5px;box-sizing:border-box;transition:background .2s,color .2s}
+.rail button:hover{color:var(--ink);background:#ECECE5}
+.rail button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.dotn{position:relative;z-index:1;width:25px;height:25px;border-radius:50%;background:var(--paper);border:1px solid var(--line-2);display:grid;place-items:center;font-size:11.5px;font-weight:600;flex:none;transition:all .3s var(--ease)}
+.rail .done .dotn{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.rail .cur button{color:var(--ink);font-weight:600;background:var(--card);box-shadow:0 1px 0 var(--line),0 8px 20px -12px rgba(22,24,27,.25)}
+.rail .cur .dotn{background:var(--ink);border-color:var(--ink);color:var(--lime);box-shadow:0 0 0 4px var(--lime-soft)}
+.side-card{margin-top:20px;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.75}
+.side-card b{color:var(--ink);font-weight:600}
+.linkbtn{all:unset;cursor:pointer;color:var(--muted);font-size:12.5px;text-decoration:underline;text-underline-offset:3px;margin-top:8px;display:inline-block;transition:color .2s}
+.linkbtn:hover{color:var(--ink)}
+.linkbtn.armed{color:var(--warn)}
+
+/* ───────── Card & step header ───────── */
+.card{background:var(--card);border-radius:var(--r);border:1px solid var(--line);padding:40px 44px 32px;box-shadow:0 1px 0 rgba(22,24,27,.02),0 30px 60px -40px rgba(22,24,27,.18)}
+#stage{transition:opacity .18s ease,transform .18s ease}
+.card.leaving #stage{opacity:0;transform:translateY(8px)}
+.shead{display:flex;align-items:flex-start;gap:20px;margin-bottom:6px}
+.bignum{font-family:var(--num);font-weight:800;font-size:56px;line-height:.9;color:var(--ink);letter-spacing:-1px;position:relative;padding-top:4px;flex:none}
+.bignum::after{content:"";position:absolute;inset-inline-start:2px;bottom:-10px;width:26px;height:4px;background:var(--lime);border-radius:2px}
+.eyebrow{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--olive);font-weight:600;letter-spacing:.1px}
+.eyebrow::before{content:"";width:7px;height:7px;background:var(--lime);transform:rotate(45deg)}
+h1.title{font-size:30px;line-height:1.35;margin:2px 0 0;font-weight:700;letter-spacing:-.3px}
+.lead{color:var(--muted);margin:18px 0 22px;max-width:64ch;font-size:15.5px}
+
+/* Hero (first step) */
+.hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;border-radius:18px;padding:36px 38px 30px;margin:-14px -18px 26px}
+.hero .mk{position:absolute;inset-inline-end:-70px;top:-60px;width:290px;color:var(--lime);opacity:.1;pointer-events:none}
+.hero .mk svg{width:100%;height:auto;display:block}
+.hero .eyebrow{color:var(--lime)}
+.hero h1.title{color:#fff;font-size:32px;max-width:20ch}
+.hero .lead{color:#BFC2BA;margin:12px 0 24px}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;position:relative}
+.perk{border:1px solid #33363A;border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.03)}
+.perk b{display:flex;align-items:center;gap:8px;font-size:14.5px;color:#fff}
+.perk b::before{content:"";width:7px;height:7px;background:var(--lime);transform:rotate(45deg);flex:none}
+.perk span{display:block;font-size:12.5px;color:#A9ACA4;margin-top:2px}
+
+/* ───────── Fields ───────── */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px}
+.field{grid-column:1/-1;padding:20px 0;border-top:1px solid var(--line);min-width:0;scroll-margin-top:calc(var(--head) + 24px)}
+.fgrid > .field:first-child,.fgrid > .field.half:first-child + .field.half{border-top:0}
+.field.half{grid-column:auto}
+.flabel{display:block;font-weight:600;margin-bottom:8px;line-height:1.65;font-size:15.5px}
+.req{color:var(--warn);margin-inline-start:3px}
+.hint{font-size:13.5px;color:var(--muted);margin:-4px 0 12px}
+.ctx{background:var(--sand);border-radius:14px;padding:12px 15px;font-size:13.5px;margin:2px 0 14px;color:var(--sand-ink);line-height:1.8}
+.ctx b{color:#7A4A12;font-weight:600}
+.tag{display:inline-block;font-size:11px;font-weight:700;color:var(--sand-ink);background:#fff;border-radius:999px;padding:1px 9px;margin-inline-end:7px;vertical-align:1px}
+.input{width:100%;border:1px solid var(--line-2);background:#FCFCFA;border-radius:13px;padding:12px 15px;outline:none;min-height:48px;transition:border-color .2s,box-shadow .2s,background .2s}
+.input:hover{border-color:#C4C5B9}
+.input:focus{border-color:var(--ink);background:#fff;box-shadow:0 0 0 4px rgba(200,218,43,.38)}
+.input::placeholder{color:#A6A89F}
+textarea.input{min-height:104px;resize:vertical;line-height:1.75}
+select.input{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:16px 52%,21px 52%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.ltr{direction:ltr;text-align:right}
+.affix{position:relative}
+.affix .input{padding-inline-end:76px}
+.affix .suf{position:absolute;inset-inline-end:15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none}
+.err{color:#B3261E;font-size:13px;margin-top:6px;display:none}
+.field.invalid .err{display:block}
+.field.invalid .input{border-color:#E09A93;box-shadow:0 0 0 4px rgba(224,154,147,.18)}
+
+/* Chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips.stack{flex-direction:column;align-items:stretch}
+.chip{all:unset;cursor:pointer;box-sizing:border-box;border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:9px 15px;font-size:14.5px;display:inline-flex;align-items:center;gap:10px;line-height:1.55;transition:background .22s var(--ease),border-color .22s,color .22s,transform .15s var(--ease),box-shadow .22s}
+.chip:hover{border-color:var(--ink);transform:translateY(-1px)}
+.chip:active{transform:scale(.97)}
+.chip:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.chips.stack .chip{border-radius:15px;padding:12px 16px}
+.tick{width:18px;height:18px;border-radius:50%;border:1.5px solid #BFC1B5;flex:none;display:grid;place-items:center;transition:all .22s var(--ease);background:#fff}
+.chips.multi .tick{border-radius:5px}
+.tick::after{content:"";width:7px;height:3.5px;border:2px solid var(--lime);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px) scale(0);transition:transform .25s var(--ease)}
+.chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--ink);font-weight:600;box-shadow:0 6px 16px -10px rgba(140,155,0,.9)}
+.chip[aria-pressed="true"] .tick{background:var(--ink);border-color:var(--ink)}
+.chip[aria-pressed="true"] .tick::after{transform:rotate(-45deg) translate(1px,-1px) scale(1)}
+.sub{margin-top:12px;display:grid;gap:8px}
+.drow{display:grid;grid-template-columns:minmax(140px,230px) 1fr;gap:12px;align-items:center;font-size:14px}
+.drow > span{color:var(--muted)}
+
+/* ───────── Projects ───────── */
+.ptools{position:sticky;top:calc(var(--head) + 3px);z-index:6;display:flex;align-items:center;gap:14px;margin:0 -12px 14px;padding:12px 12px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.ptools .sum{font-size:13.5px;color:var(--muted)}
+.ptools .sum b{color:var(--ink);font-family:var(--num);font-size:16px}
+.pbar{flex:1;height:6px;border-radius:6px;background:#EEEEE7;overflow:hidden;max-width:260px;margin-inline-start:auto}
+.pbar i{display:block;height:100%;background:var(--lime);border-radius:6px;transition:width .6s var(--ease)}
+.pcard{border:1px solid var(--line);border-radius:18px;margin-bottom:12px;background:#fff;overflow:hidden;transition:box-shadow .3s var(--ease),border-color .3s;scroll-margin-top:calc(var(--head) + 70px)}
+.pcard:hover{border-color:var(--line-2)}
+.pcard.open{border-color:var(--ink);box-shadow:0 18px 40px -26px rgba(22,24,27,.35)}
+.pcard.off .phead{opacity:.5}
+.phead{all:unset;cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;padding:15px 18px;box-sizing:border-box}
+.phead:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;border-radius:18px}
+.pidx{width:34px;height:34px;border-radius:11px;background:var(--paper);display:grid;place-items:center;font-family:var(--num);font-weight:700;font-size:15px;flex:none;transition:background .3s}
+.pcard.open .pidx{background:var(--lime)}
+.ptxt{display:flex;flex-direction:column;min-width:0;flex:1 1 auto}
+.pn{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{font-size:12px;padding:3px 11px;border-radius:999px;background:var(--warn-soft);color:var(--warn);white-space:nowrap;font-weight:600;flex:none}
+.badge.ok{background:var(--lime-soft);color:var(--olive)}
+.badge.off{background:#EEEDE8;color:#8A8B84}
+.chev{width:9px;height:9px;border-left:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .35s var(--ease);flex:none;margin:0 4px 4px 2px}
+.pcard.open .chev{transform:rotate(135deg);margin-bottom:-4px;border-color:var(--ink)}
+.pbody{padding:2px 20px 20px;border-top:1px solid var(--line);background:#FDFDFB}
+.pcard.opening .pbody{animation:reveal .45s var(--ease) both}
+@keyframes reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.pbody .field{padding:15px 0}
+.field.special{border-top:0;padding:15px 18px;margin:12px 0 6px;background:var(--lime-soft);border-radius:16px;border-inline-start:3px solid var(--lime)}
+.field.special .flabel::before{content:"سؤال خاص بهذا المشروع";display:block;font-size:11.5px;color:var(--olive);font-weight:700;margin-bottom:2px}
+.pcard .field.empty:not(.special) .flabel::after{content:"ناقص";font-size:11px;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:999px;padding:1px 8px;margin-inline-start:8px;vertical-align:1px}
+.addp{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;box-sizing:border-box;border:1.5px dashed var(--line-2);border-radius:18px;padding:16px;color:var(--muted);font-weight:600;transition:all .25s var(--ease)}
+.addp:hover{border-color:var(--ink);color:var(--ink);background:var(--lime-soft)}
+.addp::before{content:"+";width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-size:17px;line-height:1}
+
+/* Logos */
+.ltable{border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.lrow{display:grid;grid-template-columns:minmax(150px,190px) 1fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--line);transition:background .2s}
+.lrow:hover{background:#FCFCF9}
+.lrow:first-child{border-top:0}
+.lrow .ln{font-weight:600;font-size:14.5px;line-height:1.5}
+.lrow .ln small{display:block;font-weight:600;color:var(--olive);font-size:11.5px;margin-top:2px}
+.lrow .chips{gap:6px}
+.lrow .chip{padding:6px 11px;font-size:13.5px;gap:7px}
+
+/* Buttons & nav */
+.btn{all:unset;cursor:pointer;box-sizing:border-box;padding:13px 24px;border-radius:14px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:background .25s var(--ease),color .25s,transform .15s var(--ease),box-shadow .25s;text-align:center}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn:active{transform:scale(.98)}
+.btn.pri{background:var(--ink);color:#fff}
+.btn.pri .arr{width:22px;height:22px;border-radius:50%;background:var(--lime);display:grid;place-items:center;transition:transform .3s var(--ease)}
+.btn.pri .arr::after{content:"";width:6px;height:6px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg) translate(1px,-1px)}
+.btn.pri:hover .arr{transform:translateX(-3px)}
+.btn.pri:hover{box-shadow:0 10px 24px -12px rgba(22,24,27,.6)}
+.btn.lime{background:var(--lime);color:var(--ink)}
+.btn.lime:hover{background:var(--lime-2)}
+.btn.ghost{color:var(--muted)}
+.btn.ghost:hover{color:var(--ink);background:#F0F0EA}
+.btn.line{border:1px solid var(--line-2);color:var(--ink);background:#fff}
+.btn.line:hover{border-color:var(--ink)}
+.btn.danger{color:#B3261E;font-size:13.5px;padding:8px 0}
+.btn[disabled]{opacity:.5;pointer-events:none}
+.nav{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
+.nav .count{font-size:13px;color:var(--muted)}
+.nav .count b{font-family:var(--num);color:var(--ink);font-size:15px}
+.nav .btn.pri{margin-inline-start:auto}
+
+/* Review */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px}
+.stat{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:#FCFCFA}
+.stat b{display:block;font-family:var(--num);font-size:27px;line-height:1.25;direction:ltr;text-align:right;font-weight:700}
+.stat span{font-size:12.5px;color:var(--muted)}
+.stat.hi{background:var(--ink);border-color:var(--ink)}
+.stat.hi b{color:var(--lime)}
+.stat.hi span{color:#A9ACA4}
+.notice{border-radius:16px;padding:14px 18px;font-size:14px;margin-bottom:18px;background:var(--lime-soft);color:#3E4800}
+.notice.warn{background:var(--warn-soft);color:#6A3510}
+.rv{border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden}
+.rv-h{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:#FAFAF6;border-bottom:1px solid var(--line)}
+.rv-h h3{margin:0;font-size:15.5px;display:flex;align-items:center;gap:10px}
+.rv-h h3 .num{font-size:14px;color:var(--muted)}
+.rv-h .linkbtn{margin:0;color:var(--olive);text-decoration:none;font-weight:700;font-size:13.5px}
+.rv dl{margin:0;padding:4px 20px 8px}
+.rv .r{display:grid;grid-template-columns:minmax(150px,36%) 1fr;gap:14px;padding:9px 0;border-top:1px solid #F0F0EA;font-size:14px}
+.rv .r:first-child{border-top:0}
+.rv dt{color:var(--muted)}
+.rv dd{margin:0;word-break:break-word;unicode-bidi:plaintext;text-align:right}
+.miss{color:var(--warn);font-weight:600;font-size:13px}
+.was{color:#9A9B93;font-size:12.5px;margin-inline-start:6px}
+.rvp{padding:13px 0;border-top:1px solid #F0F0EA}
+.rvp:first-child{border-top:0}
+.rvp-h{display:flex;gap:10px;align-items:center;margin-bottom:7px}
+.rvp-h b{font-size:14.5px}
+.rvp-items{display:flex;flex-wrap:wrap;gap:6px}
+.it{font-size:12.5px;background:#F3F3EE;border-radius:8px;padding:3px 9px}
+.it i{font-style:normal;color:var(--muted)}
+.it.m{background:var(--warn-soft);color:var(--warn)}
+.confirm{display:flex;gap:12px;align-items:flex-start;margin:22px 0 6px;font-size:14.5px;cursor:pointer;padding:14px 16px;border-radius:16px;border:1px solid var(--line);transition:border-color .2s,background .2s}
+.confirm:hover{border-color:var(--ink)}
+.confirm input{width:19px;height:19px;margin-top:4px;accent-color:var(--ink);flex:none}
+.hp{position:absolute;width:1px;height:1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);opacity:0}
+.sendrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.errbox{display:none;margin-top:14px;padding:14px 18px;border-radius:16px;background:#FCECEA;color:#7A1D16;font-size:14px}
+.errbox.on{display:block}
+
+/* Done */
+.done-wrap{text-align:center;padding:34px 10px 16px}
+.done-mk{width:96px;height:96px;border-radius:28px;background:var(--ink);color:var(--lime);display:grid;place-items:center;margin:0 auto 22px;animation:pop .7s var(--ease) both}
+.done-mk svg{width:46px;height:auto}
+@keyframes pop{0%{transform:scale(.6) rotate(-8deg);opacity:0}60%{transform:scale(1.05) rotate(2deg);opacity:1}100%{transform:none}}
+.done-wrap .lead{margin:12px auto 24px}
+.done-wrap .sendrow{justify-content:center}
+
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,16px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;transition:all .35s var(--ease);z-index:60;max-width:90vw;text-align:center;display:flex;gap:10px;align-items:center;box-shadow:0 14px 30px -14px rgba(22,24,27,.6)}
+.toast::before{content:"";width:7px;height:7px;background:var(--lime);transform:rotate(45deg);flex:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.foot{text-align:center;font-size:12.5px;color:var(--muted);margin-top:22px;display:flex;align-items:center;justify-content:center;gap:8px}
+.foot svg{height:14px;width:auto;color:var(--ink)}
+
+/* Entrance motion */
+#stage.enter .shead,#stage.enter .hero,#stage.enter .lead,#stage.enter .field,#stage.enter .pcard,#stage.enter .ptools,#stage.enter .rv,#stage.enter .stats,#stage.enter .notice,#stage.enter .ltable,#stage.enter .addp{animation:rise .6s var(--ease) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.field.flash{animation:flash 1.1s var(--ease)}
+@keyframes flash{0%{background:transparent}25%{background:rgba(200,218,43,.12)}100%{background:transparent}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+@media (max-width:980px){
+  :root{--head:58px}
+  .wrap{grid-template-columns:minmax(0,1fr);padding:16px 12px 120px;gap:0}
+  .side{display:none}
+  .top-in{padding:0 16px}
+  .logo svg{height:27px}
+  .top-title{display:none}
+  .card{padding:22px 18px 18px;border-radius:20px}
+  .hero{margin:-6px -6px 22px;padding:28px 22px 22px;border-radius:16px}
+  .hero h1.title{font-size:26px}
+  .hero .mk{width:170px;top:-50px;inset-inline-end:-75px;opacity:.08}
+  .perks{grid-template-columns:1fr}
+  .shead{gap:14px}
+  .bignum{font-size:44px}
+  h1.title{font-size:23px}
+  .fgrid{grid-template-columns:minmax(0,1fr)}
+  .field.half{grid-column:1/-1}
+  .fgrid > .field.half:first-child + .field.half{border-top:1px solid var(--line)}
+  .drow,.lrow{grid-template-columns:1fr;gap:6px}
+  .stats{grid-template-columns:1fr 1fr}
+  .rv .r{grid-template-columns:1fr;gap:2px}
+  .nav{position:fixed;bottom:0;left:0;right:0;margin:0;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px 14px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);z-index:30}
+  .pbody{padding:2px 14px 14px}
+  .phead{padding:13px 14px;gap:10px}
+  .ptools{margin:0 -6px 12px;padding:10px 6px}
+  .pbar{max-width:120px}
+  .toast{bottom:92px}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="top-in">
+    <div class="logo" id="logo"></div>
+    <div class="top-title" id="topTitle"></div>
+    <div class="save" id="save"><span class="dot"></span><span id="saveTxt">يُحفظ تلقائياً</span></div>
+  </div>
+  <div class="prog"><i id="pbar"></i></div>
+</header>
+
+<div class="wrap">
+  <aside class="side" id="side"></aside>
+  <main>
+    <div class="card" id="card">
+      <div id="stage"></div>
+      <div class="nav" id="nav">
+        <button type="button" class="btn ghost" id="prev">السابق</button>
+        <span class="count" id="count"></span>
+        <button type="button" class="btn pri" id="next"><span id="nextTxt">التالي</span><span class="arr"></span></button>
+      </div>
+    </div>
+    <div class="foot" id="foot"></div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* Lenis 1.3.28 — https://github.com/darkroomengineering/lenis — MIT License © 2024 darkroom.engineering */
+(function(){var e=`1.3.28`;function t(e,t,n){return Math.max(e,Math.min(t,n))}function n(e,t,n){return(1-n)*e+n*t}function r(e,t,r,i){return n(e,t,1-Math.exp(-r*i))}function i(e,t){return(e%t+t)%t}var a=class{isRunning=!1;value=0;from=0;to=0;currentTime=0;lerp;duration;easing;onUpdate;advance(e){if(!this.isRunning)return;let n=!1;if(this.duration&&this.easing){this.currentTime+=e;let r=t(0,this.currentTime/this.duration,1);n=r>=1;let i=n?1:this.easing(r);this.value=this.from+(this.to-this.from)*i}else this.lerp?(this.value=r(this.value,this.to,this.lerp*60,e),Math.round(this.value)===Math.round(this.to)&&(this.value=this.to,n=!0)):(this.value=this.to,n=!0);n&&this.stop(),this.onUpdate?.(this.value,n)}stop(){this.isRunning=!1}fromTo(e,t,{lerp:n,duration:r,easing:i,onStart:a,onUpdate:o}){this.from=this.value=e,this.to=t,this.lerp=n,this.duration=r,this.easing=i,this.currentTime=0,this.isRunning=!0,a?.(),this.onUpdate=o}};function o(e,t){let n;return function(...r){clearTimeout(n),n=setTimeout(()=>{n=void 0,e.apply(this,r)},t)}}var s=class{wrapper;content;width=0;height=0;scrollHeight=0;scrollWidth=0;debouncedResize;wrapperResizeObserver;contentResizeObserver;constructor(e,t,{autoResize:n=!0,debounce:r=250}={}){this.wrapper=e,this.content=t,n&&(this.debouncedResize=o(this.resize,r),this.wrapper instanceof Window?window.addEventListener(`resize`,this.debouncedResize):(this.wrapperResizeObserver=new ResizeObserver(this.debouncedResize),this.wrapperResizeObserver.observe(this.wrapper)),this.contentResizeObserver=new ResizeObserver(this.debouncedResize),this.contentResizeObserver.observe(this.content)),this.resize()}destroy(){this.wrapperResizeObserver?.disconnect(),this.contentResizeObserver?.disconnect(),this.wrapper===window&&this.debouncedResize&&window.removeEventListener(`resize`,this.debouncedResize)}resize=()=>{this.onWrapperResize(),this.onContentResize()};onWrapperResize=()=>{this.wrapper instanceof Window?(this.width=window.innerWidth,this.height=window.innerHeight):(this.width=this.wrapper.clientWidth,this.height=this.wrapper.clientHeight)};onContentResize=()=>{this.wrapper instanceof Window?(this.scrollHeight=this.content.scrollHeight,this.scrollWidth=this.content.scrollWidth):(this.scrollHeight=this.wrapper.scrollHeight,this.scrollWidth=this.wrapper.scrollWidth)};get limit(){return{x:this.scrollWidth-this.width,y:this.scrollHeight-this.height}}},c=class{events={};emit(e,...t){let n=this.events[e]||[];for(let e=0,r=n.length;e<r;e++)n[e]?.(...t)}on(e,t){return this.events[e]?this.events[e].push(t):this.events[e]=[t],()=>{this.events[e]=this.events[e]?.filter(e=>t!==e)}}off(e,t){this.events[e]=this.events[e]?.filter(e=>t!==e)}destroy(){this.events={}}};let l={passive:!1};function u(e,t){return e===1?16.666666666666668:e===2?t:1}var d=class{element;options;touchStart={x:0,y:0};lastDelta={x:0,y:0};window={width:0,height:0};emitter=new c;constructor(e,t={wheelMultiplier:1,touchMultiplier:1}){this.element=e,this.options=t,window.addEventListener(`resize`,this.onWindowResize),this.onWindowResize(),this.element.addEventListener(`wheel`,this.onWheel,l),this.element.addEventListener(`touchstart`,this.onTouchStart,l),this.element.addEventListener(`touchmove`,this.onTouchMove,l),this.element.addEventListener(`touchend`,this.onTouchEnd,l)}on(e,t){return this.emitter.on(e,t)}destroy(){this.emitter.destroy(),window.removeEventListener(`resize`,this.onWindowResize),this.element.removeEventListener(`wheel`,this.onWheel,l),this.element.removeEventListener(`touchstart`,this.onTouchStart,l),this.element.removeEventListener(`touchmove`,this.onTouchMove,l),this.element.removeEventListener(`touchend`,this.onTouchEnd,l)}onTouchStart=e=>{let{clientX:t,clientY:n}=e.targetTouches?e.targetTouches[0]:e;this.touchStart.x=t,this.touchStart.y=n,this.lastDelta={x:0,y:0},this.emitter.emit(`scroll`,{deltaX:0,deltaY:0,event:e})};onTouchMove=e=>{let{clientX:t,clientY:n}=e.targetTouches?e.targetTouches[0]:e,r=-(t-this.touchStart.x)*this.options.touchMultiplier,i=-(n-this.touchStart.y)*this.options.touchMultiplier;this.touchStart.x=t,this.touchStart.y=n,this.lastDelta={x:r,y:i},this.emitter.emit(`scroll`,{deltaX:r,deltaY:i,event:e})};onTouchEnd=e=>{this.emitter.emit(`scroll`,{deltaX:this.lastDelta.x,deltaY:this.lastDelta.y,event:e})};onWheel=e=>{let{deltaX:t,deltaY:n,deltaMode:r}=e,i=u(r,this.window.width),a=u(r,this.window.height);t*=i,n*=a,t*=this.options.wheelMultiplier,n*=this.options.wheelMultiplier,this.emitter.emit(`scroll`,{deltaX:t,deltaY:n,event:e})};onWindowResize=()=>{this.window={width:window.innerWidth,height:window.innerHeight}}};let f=e=>Math.min(1,1.001-2**(-10*e));var p=class{_isScrolling=!1;_isStopped=!1;_isLocked=!1;_preventNextNativeScrollEvent=!1;_resetVelocityTimeout=null;_rafId=null;_isDraggingSelection=!1;reducedMotionMediaQuery=window.matchMedia(`(prefers-reduced-motion: reduce)`);isTouching;isIos;time=0;userData={};lastVelocity=0;velocity=0;direction=0;options;targetScroll;animatedScroll;animate=new a;emitter=new c;dimensions;virtualScroll;constructor({wrapper:t=window,content:n=document.documentElement,eventsTarget:r=t,smoothWheel:i=!0,syncTouch:a=!1,syncTouchLerp:o=.075,touchInertiaExponent:c=1.7,duration:l,easing:u,lerp:p=.1,infinite:m=!1,orientation:h=`vertical`,gestureOrientation:g=h===`horizontal`?`both`:`vertical`,touchMultiplier:_=1,wheelMultiplier:v=1,autoResize:y=!0,prevent:b,virtualScroll:x,overscroll:S=!0,autoRaf:C=!1,anchors:w=!1,autoToggle:T=!1,allowNestedScroll:E=!1,__experimental__naiveDimensions:D=!1,naiveDimensions:O=D,stopInertiaOnNavigate:k=!1,respectReducedMotion:A=!0}={}){window.lenisVersion=e,window.lenis||(window.lenis={}),window.lenis.version=e,h===`horizontal`&&(window.lenis.horizontal=!0),a===!0&&(window.lenis.touch=!0),this.isIos=/(iPad|iPhone|iPod)/g.test(navigator.userAgent),t&&t!==document.documentElement||(t=window),typeof l==`number`&&typeof u!=`function`?u=f:typeof u==`function`&&typeof l!=`number`&&(l=1),this.options={wrapper:t,content:n,eventsTarget:r,smoothWheel:i,syncTouch:a,syncTouchLerp:o,touchInertiaExponent:c,duration:l,easing:u,lerp:p,infinite:m,gestureOrientation:g,orientation:h,touchMultiplier:_,wheelMultiplier:v,autoResize:y,prevent:b,virtualScroll:x,overscroll:S,autoRaf:C,anchors:w,autoToggle:T,allowNestedScroll:E,naiveDimensions:O,stopInertiaOnNavigate:k,respectReducedMotion:A},this.dimensions=new s(t,n,{autoResize:y}),this.updateClassName(),this.targetScroll=this.animatedScroll=this.actualScroll,this.options.wrapper.addEventListener(`scroll`,this.onNativeScroll),this.options.wrapper.addEventListener(`scrollend`,this.onScrollEnd,{capture:!0}),(this.options.anchors||this.options.stopInertiaOnNavigate)&&this.options.wrapper.addEventListener(`click`,this.onClick),this.options.wrapper.addEventListener(`pointerdown`,this.onPointerDown),this.virtualScroll=new d(r,{touchMultiplier:_,wheelMultiplier:v}),this.virtualScroll.on(`scroll`,this.onVirtualScroll),this.options.autoToggle&&(this.checkOverflow(),this.rootElement.addEventListener(`transitionend`,this.onTransitionEnd)),this.options.autoRaf&&(this._rafId=requestAnimationFrame(this.raf))}destroy(){this.emitter.destroy(),this._resetVelocityTimeout!==null&&(clearTimeout(this._resetVelocityTimeout),this._resetVelocityTimeout=null),this.options.wrapper.removeEventListener(`scroll`,this.onNativeScroll),this.options.wrapper.removeEventListener(`scrollend`,this.onScrollEnd,{capture:!0}),this.options.wrapper.removeEventListener(`pointerdown`,this.onPointerDown),(this.options.anchors||this.options.stopInertiaOnNavigate)&&this.options.wrapper.removeEventListener(`click`,this.onClick),this.options.autoToggle&&this.rootElement.removeEventListener(`transitionend`,this.onTransitionEnd),this.virtualScroll.destroy(),this.dimensions.destroy(),this.cleanUpClassName(),this._rafId&&cancelAnimationFrame(this._rafId)}on(e,t){return this.emitter.on(e,t)}off(e,t){return this.emitter.off(e,t)}onScrollEnd=e=>{e instanceof CustomEvent||(this.isScrolling===`smooth`||this.isScrolling===!1)&&e.stopPropagation()};dispatchScrollendEvent=()=>{this.options.wrapper.dispatchEvent(new CustomEvent(`scrollend`,{bubbles:this.options.wrapper===window,detail:{lenisScrollEnd:!0}}))};get overflow(){let e=this.isHorizontal?`overflow-x`:`overflow-y`;return getComputedStyle(this.rootElement)[e]}checkOverflow(){[`hidden`,`clip`].includes(this.overflow)?this.internalStop():this.internalStart()}onTransitionEnd=e=>{e.propertyName?.includes(`overflow`)&&e.target===this.rootElement&&this.checkOverflow()};setScroll(e){this.isHorizontal?this.options.wrapper.scrollTo({left:e,behavior:`instant`}):this.options.wrapper.scrollTo({top:e,behavior:`instant`})}onClick=e=>{let t=e.composedPath().filter(e=>e instanceof HTMLAnchorElement&&e.href).map(e=>new URL(e.href)),n=new URL(window.location.href);if(this.options.anchors){let e=t.find(e=>n.host===e.host&&n.pathname===e.pathname&&e.hash);if(e){let t=typeof this.options.anchors==`object`&&this.options.anchors?this.options.anchors:void 0,n=decodeURIComponent(e.hash);this.scrollTo(n,t);return}}this.options.stopInertiaOnNavigate&&t.some(e=>n.host===e.host&&n.pathname!==e.pathname)&&this.reset()};onPointerDown=e=>{e.button===1&&this.reset()};isTouchOnSelectionHandle(e){let t=window.getSelection();if(!t||t.isCollapsed||t.rangeCount===0)return!1;let n=e.targetTouches[0]??e.changedTouches[0];if(!n)return!1;let r=t.getRangeAt(0).getClientRects();if(r.length===0)return!1;let i=r[0],a=r[r.length-1],o=Math.hypot(n.clientX-i.left,n.clientY-i.top)<=40,s=Math.hypot(n.clientX-a.right,n.clientY-a.bottom)<=40;return o||s}onVirtualScroll=e=>{if(typeof this.options.virtualScroll==`function`&&this.options.virtualScroll(e)===!1)return;let{deltaX:t,deltaY:n,event:r}=e;if(this.emitter.emit(`virtual-scroll`,{deltaX:t,deltaY:n,event:r}),r.ctrlKey||r.lenisStopPropagation)return;let i=r.type.includes(`touch`),a=r.type.includes(`wheel`);if(i&&this.isIos&&(r.type===`touchstart`&&(this._isDraggingSelection=this.isTouchOnSelectionHandle(r)),this._isDraggingSelection)){r.type===`touchend`&&(this._isDraggingSelection=!1);return}this.isTouching=r.type===`touchstart`||r.type===`touchmove`;let o=t===0&&n===0;if(this.options.syncTouch&&i&&r.type===`touchstart`&&o&&!this.isStopped&&!this.isLocked){this.reset();return}let s=this.options.gestureOrientation===`vertical`&&n===0||this.options.gestureOrientation===`horizontal`&&t===0;if(o||s)return;let c=r.composedPath();c=c.slice(0,c.indexOf(this.rootElement));let l=this.options.prevent,u=Math.abs(t)>=Math.abs(n)?`horizontal`:`vertical`;if(c.find(e=>e instanceof HTMLElement&&(typeof l==`function`&&l?.(e)||e.hasAttribute?.(`data-lenis-prevent`)||u===`vertical`&&e.hasAttribute?.(`data-lenis-prevent-vertical`)||u===`horizontal`&&e.hasAttribute?.(`data-lenis-prevent-horizontal`)||i&&e.hasAttribute?.(`data-lenis-prevent-touch`)||a&&e.hasAttribute?.(`data-lenis-prevent-wheel`)||this.options.allowNestedScroll&&this.hasNestedScroll(e,{deltaX:t,deltaY:n}))))return;if(this.isStopped||this.isLocked){r.cancelable&&r.preventDefault();return}if(!(this.options.syncTouch&&i||this.options.smoothWheel&&a)){this.isScrolling=`native`,this.animate.stop(),r.lenisStopPropagation=!0;return}let d=n;this.options.gestureOrientation===`both`?d=Math.abs(n)>Math.abs(t)?n:t:this.options.gestureOrientation===`horizontal`&&(d=t),(!this.options.overscroll||this.options.infinite||this.options.wrapper!==window&&this.limit>0&&(this.animatedScroll>0&&this.animatedScroll<this.limit||this.animatedScroll===0&&n>0||this.animatedScroll===this.limit&&n<0))&&(r.lenisStopPropagation=!0),r.cancelable&&r.preventDefault();let f=i&&this.options.syncTouch,p=i&&r.type===`touchend`;p&&(d=Math.sign(d)*Math.abs(this.velocity)**this.options.touchInertiaExponent),this.scrollTo(this.targetScroll+d,{programmatic:!1,...f?{lerp:p?this.options.syncTouchLerp:1}:{lerp:this.options.lerp,duration:this.options.duration,easing:this.options.easing}})};resize(){this.dimensions.resize(),this.animatedScroll=this.targetScroll=this.actualScroll,this.emit()}emit(){this.emitter.emit(`scroll`,this)}onNativeScroll=()=>{if(this._resetVelocityTimeout!==null&&(clearTimeout(this._resetVelocityTimeout),this._resetVelocityTimeout=null),this._preventNextNativeScrollEvent)this._preventNextNativeScrollEvent=!1;else if(this.isScrolling===!1||this.isScrolling===`native`){let e=this.animatedScroll;this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity,this.velocity=this.animatedScroll-e,this.direction=Math.sign(this.animatedScroll-e),this.isStopped||(this.isScrolling=`native`),this.emit(),this.velocity!==0&&(this._resetVelocityTimeout=setTimeout(()=>{this.lastVelocity=this.velocity,this.velocity=0,this.isScrolling=!1,this.emit()},400))}};reset(){this.isLocked=!1,this.isScrolling=!1,this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity=0,this.animate.stop()}start(){this.isStopped&&(this.options.autoToggle?this.rootElement.style.removeProperty(`overflow`):this.internalStart())}internalStart(){this.isStopped&&(this.reset(),this.isStopped=!1,this.emit())}stop(){this.isStopped||(this.options.autoToggle?this.rootElement.style.setProperty(`overflow`,`clip`):this.internalStop())}internalStop(){this.isStopped||(this.reset(),this.isStopped=!0,this.emit())}raf=e=>{let t=e-(this.time||e);this.time=e,this.animate.advance(t*.001),this.options.autoRaf&&(this._rafId=requestAnimationFrame(this.raf))};scrollTo(e,{offset:n=0,immediate:r=!1,lock:i=!1,programmatic:a=!0,lerp:o=a?this.options.lerp:void 0,duration:s=a?this.options.duration:void 0,easing:c=a?this.options.easing:void 0,onStart:l,onComplete:u,force:d=!1,userData:p}={}){if(this.prefersReducedMotion&&(a?r=!0:(o=1,s=void 0,c=void 0)),(this.isStopped||this.isLocked)&&!d)return;let m=e,h=n;if(typeof m==`string`&&[`top`,`left`,`start`,`#`].includes(m))m=0;else if(typeof m==`string`&&[`bottom`,`right`,`end`].includes(m))m=this.limit;else{let e=null;if(typeof m==`string`?(e=m.startsWith(`#`)?document.getElementById(m.slice(1)):document.querySelector(m),e||(m===`#top`?m=0:console.warn(`Lenis: Target not found`,m))):m instanceof Element&&(e=m),e){if(this.options.wrapper!==window){let e=this.rootElement.getBoundingClientRect();h-=this.isHorizontal?e.left:e.top}let t=e.getBoundingClientRect(),n=getComputedStyle(e),r=this.isHorizontal?Number.parseFloat(n.scrollMarginLeft):Number.parseFloat(n.scrollMarginTop),i=getComputedStyle(this.rootElement),a=this.isHorizontal?Number.parseFloat(i.scrollPaddingLeft):Number.parseFloat(i.scrollPaddingTop);m=(this.isHorizontal?t.left:t.top)+this.animatedScroll-(Number.isNaN(r)?0:r)-(Number.isNaN(a)?0:a)}}if(typeof m==`number`){if(m+=h,this.options.infinite){if(a){this.targetScroll=this.animatedScroll=this.scroll;let e=m-this.animatedScroll;e>this.limit/2?m-=this.limit:e<-this.limit/2&&(m+=this.limit)}}else m=t(0,m,this.limit);m===this.targetScroll?(l?.(this),u?.(this)):(this.userData=p??{},r?(this.animatedScroll=this.targetScroll=m,this.setScroll(this.scroll),this.reset(),this.preventNextNativeScrollEvent(),this.emit(),u?.(this),this.userData={},requestAnimationFrame(()=>{this.dispatchScrollendEvent()})):(a||(this.targetScroll=m),typeof s==`number`&&typeof c!=`function`?c=f:typeof c==`function`&&typeof s!=`number`&&(s=1),this.animate.fromTo(this.animatedScroll,m,{duration:s,easing:c,lerp:o,onStart:()=>{i&&(this.isLocked=!0),this.isScrolling=`smooth`,l?.(this)},onUpdate:(e,t)=>{this.isScrolling=`smooth`,this.lastVelocity=this.velocity,this.velocity=e-this.animatedScroll,this.direction=Math.sign(this.velocity),this.animatedScroll=e,this.setScroll(this.scroll),a&&(this.targetScroll=e),t||this.emit(),t&&(this.reset(),this.emit(),u?.(this),this.userData={},requestAnimationFrame(()=>{this.dispatchScrollendEvent()}),this.preventNextNativeScrollEvent())}})))}}preventNextNativeScrollEvent(){this._preventNextNativeScrollEvent=!0,requestAnimationFrame(()=>{this._preventNextNativeScrollEvent=!1})}hasNestedScroll(e,{deltaX:t,deltaY:n}){let r=Date.now();e._lenis||={};let i=e._lenis,a,o,s,c,l,u,d,f,p,m;if(r-(i.time??0)>2e3){i.time=Date.now();let t=window.getComputedStyle(e);if(i.computedStyle=t,a=[`auto`,`overlay`,`scroll`].includes(t.overflowX),o=[`auto`,`overlay`,`scroll`].includes(t.overflowY),l=[`auto`].includes(t.overscrollBehaviorX),u=[`auto`].includes(t.overscrollBehaviorY),i.hasOverflowX=a,i.hasOverflowY=o,!(a||o))return!1;d=e.scrollWidth,f=e.scrollHeight,p=e.clientWidth,m=e.clientHeight,s=d>p,c=f>m,i.isScrollableX=s,i.isScrollableY=c,i.scrollWidth=d,i.scrollHeight=f,i.clientWidth=p,i.clientHeight=m,i.hasOverscrollBehaviorX=l,i.hasOverscrollBehaviorY=u}else s=i.isScrollableX,c=i.isScrollableY,a=i.hasOverflowX,o=i.hasOverflowY,d=i.scrollWidth,f=i.scrollHeight,p=i.clientWidth,m=i.clientHeight,l=i.hasOverscrollBehaviorX,u=i.hasOverscrollBehaviorY;if(!(a&&s||o&&c))return!1;let h=Math.abs(t)>=Math.abs(n)?`horizontal`:`vertical`,g,_,v,y,b,x;if(h===`horizontal`)g=Math.round(e.scrollLeft),_=d-p,v=t,y=a,b=s,x=l;else if(h===`vertical`)g=Math.round(e.scrollTop),_=f-m,v=n,y=o,b=c,x=u;else return!1;return!x&&(g>=_||g<=0)||(v>0?g<_:g>0)&&y&&b}get rootElement(){return this.options.wrapper===window?document.documentElement:this.options.wrapper}get limit(){return this.options.naiveDimensions?this.isHorizontal?this.rootElement.scrollWidth-this.rootElement.clientWidth:this.rootElement.scrollHeight-this.rootElement.clientHeight:this.dimensions.limit[this.isHorizontal?`x`:`y`]}get isHorizontal(){return this.options.orientation===`horizontal`}get actualScroll(){let e=this.options.wrapper;return this.isHorizontal?e.scrollX??e.scrollLeft:e.scrollY??e.scrollTop}get scroll(){return this.options.infinite?i(this.animatedScroll,this.limit):this.animatedScroll}get progress(){return this.limit===0?1:this.scroll/this.limit}get isScrolling(){return this._isScrolling}set isScrolling(e){this._isScrolling!==e&&(this._isScrolling=e,this.updateClassName())}get isStopped(){return this._isStopped}set isStopped(e){this._isStopped!==e&&(this._isStopped=e,this.updateClassName())}get isLocked(){return this._isLocked}set isLocked(e){this._isLocked!==e&&(this._isLocked=e,this.updateClassName())}get isSmooth(){return this.isScrolling===`smooth`}get prefersReducedMotion(){return this.options.respectReducedMotion&&this.reducedMotionMediaQuery.matches}get className(){let e=`lenis`;return this.options.autoToggle&&(e+=` lenis-autoToggle`),this.isStopped&&(e+=` lenis-stopped`),this.isLocked&&(e+=` lenis-locked`),this.isScrolling&&(e+=` lenis-scrolling`),this.isScrolling===`smooth`&&(e+=` lenis-smooth`),e}updateClassName(){this.cleanUpClassName(),this.className.split(` `).forEach(e=>{this.rootElement.classList.add(e)})}cleanUpClassName(){for(let e of Array.from(this.rootElement.classList))(e===`lenis`||e.startsWith(`lenis-`))&&this.rootElement.classList.remove(e)}};globalThis.Lenis=p,globalThis.Lenis.prototype=p.prototype})();
+</script>
+<script>
+/* =====================================================================
+   الإعدادات — هذا هو الجزء الوحيد الذي تحتاج إلى تعديله
+   ===================================================================== */
+const CONFIG = {
+  agency: {
+    name: 'نقطة 360',
+    logo: '',                       // اتركه فارغاً لاستخدام شعار نقطة المدمج، أو ضع مسار صورة
+    email: 'info@noqta360.com',     // يظهر للعميل إن تعذّر الإرسال
+    whatsapp: '966550548787'        // يظهر للعميل إن تعذّر الإرسال
+  },
+  client: { name: 'جلف إينوفيشن' },
+  colors: { brand: '#C8DA2B', ink: '#16181B', olive: '#5B6A00' },
+
+  provider: 'emailjs',              // 'emailjs' (رسالة HTML منسّقة) أو 'web3forms' (أبسط، تنسيق نصي)
+  emailjs:   { publicKey: '9NL3jGucnjThZdF06', serviceId: 'service_owzg7tc', templateId: 'template_eq3vfd7' },
+  web3forms: { accessKey: 'YOUR_ACCESS_KEY' },
+
+  storageKey: 'noqta-gulf-innovation-profile-v1'
+};
+
+/* شعار نقطة 360 (متجه) */
+const LOGO_SVG = `<svg viewBox="0 0 2060 570" fill="currentColor" role="img" aria-label="نقطة 360"><path fill-rule="evenodd" d="M406.2 567.8C406.4 566.2 409.1 564.1 415.8 560.2L425 554.8L425 516.2L425 477.6L421.5 484.8C414.5 499.4 403 507.9 387.1 510.2C365.3 513.4 346.6 501.9 338.4 480.3C330.9 460.8 331.4 433.5 339.4 412C343.4 401.1 348.3 393.8 357 385.6C372.7 370.8 399.8 363 425.5 366C436.4 367.3 448.2 370.7 454.8 374.4L459 376.9L467.6 371.9C473.3 368.7 477.3 367 479.6 367L483 367L483 461.1L483 555.2L488 560.7C497.1 570.6 499.5 570 449.4 570L405.9 570L406.2 567.8ZM1488 461.5L1488 353L1630.2 353L1772.5 353L1684.2 264.7L1596 176.5L1684.5 88L1773 -0.5L1861.2 87.8L1949.5 176L1861.7 263.8C1813.5 312 1774 351.9 1774 352.3C1774 352.7 1817.5 352.9 1870.8 352.8L1967.5 352.5L1976 350.1C2021 337.7 2051.3 303.5 2058.5 257C2059.6 249.5 2059.8 257.1 2059.9 320.6C2060 395.3 2059.4 411.1 2055.9 428.3C2051.3 451 2040.3 476.5 2027.2 495C2019 506.5 2002.3 524.1 1991.5 532.6C1969.5 549.7 1944.6 561.2 1916.2 567.2L1905.5 569.5L1696.8 569.8L1488 570L1488 461.5ZM228.2 509.9C198.5 506.1 178.8 491 170.3 465.5C167.8 458 167.6 456.3 167.6 440C167.6 423.7 167.8 422 170.3 414.5C173.9 403.6 179.3 394.9 187.1 387.1C199 375.1 214.9 368.2 235.1 366C253.6 364 271.7 366.9 287 374.2C293.7 377.4 297.1 379.9 303 385.9C311.7 394.7 314.8 400 318.6 412.5C321 420.4 321.3 423.2 321.3 435.5C321.4 452.1 319.9 459.5 313.8 472C310.6 478.8 308.1 482.1 301.6 488.6C292.4 497.7 284.5 502.6 272.5 506.3C258.5 510.7 243.5 511.9 228.2 509.9ZM539.1 509.9C523.6 507.3 512.8 498 507.7 482.9C505.6 476.7 505.5 474.6 505.2 426.8L504.9 377L496.9 377L489 377L489 373.5L489 370L497 370L505 370L505 354.1L505 338.2L512.8 336.5C517 335.5 530 332.6 541.5 330L562.5 325.3L562.8 347.6L563 370L582 370L601 370L601 373.5L601 377L581.9 377L562.9 377L563.2 417.8L563.5 458.5L566 463.4C569.8 471 572.5 472.5 582.4 472.5C590 472.5 591.1 472.2 596 469.2C605.2 463.5 606 466.7 599.3 481C595.1 489.8 585.5 499.9 577.3 504.3C566.6 510 552.4 512.1 539.1 509.9ZM634.5 509.6C623.2 506.8 615.8 500.5 612 490.4C610.2 485.5 609.9 483 610.2 475.5C610.9 460.1 617.1 450.5 631.2 443.4C634.9 441.6 649.5 436.5 663.7 432.2L689.5 424.3L689.8 406.9C689.9 397.3 689.6 387.3 689 384.4C687.8 378.9 684.6 374.9 679.7 373.1C676.5 371.9 663.1 371.6 661.4 372.8C660.8 373.2 655 384 648.4 396.7C636.7 419.6 634.1 423.2 632.6 418.2C631.9 415.9 623 377.4 623 376.7C623 375.9 641.7 370.2 649.9 368.5C663 365.8 681 364.7 694 365.9C720.2 368.3 736.7 376.6 743.7 390.9L746.5 396.5L746.8 444.7L747.1 492.9L753.3 494.9C758.5 496.4 759.5 497.1 759.8 499.2C760 501.2 759.3 502 754.8 504.3C746.7 508.4 737.7 510.3 726.5 510.4C713.3 510.5 706.7 508.4 699.5 501.8C693.3 496.1 691 490.8 691 481.6L690.9 475.5L687.5 482.8C683.2 491.9 673.1 502.4 665 506.2C654.9 510.9 644.5 512.1 634.5 509.6ZM817.9 509.9C806.2 508.2 796 503.3 789.2 496L785.5 492L776.9 501.2C770.3 508.3 767.9 510.2 766.5 509.7C765 509.1 764.8 508.2 765.3 503.2C765.7 500.1 766.5 484.1 767.1 467.8L768.4 438L771.4 438L774.5 438L777.6 450.3C786.9 486.9 802.7 505 825.3 505C831.5 505 833.2 504.6 836.6 502.4C841.3 499.4 844.3 495.2 847.2 487.9C850.1 480.4 850.9 456.6 848.6 446.7C844.3 428.2 833.1 417.9 813.4 414.3L805 412.7L805 409.6C805 406.5 805.2 406.3 812.2 404.2C828.8 399.2 838 386.6 841.1 364.7C842.4 355 841.6 338.3 839.3 330.7C837.5 324.5 834 319.6 830 317.5C825.2 315 807.3 315.7 806.5 318.4C785.1 384.5 782.8 391.1 781.2 390.8C780 390.6 777.6 382.7 770.8 356.5C766 337.8 762.1 322 762 321.3C762 319.6 781.7 313.5 797 310.5C846.4 300.9 885.7 308.6 899.8 330.7C906.8 341.8 908 358.3 902.6 369.4C895.1 384.7 875.9 397.8 852.1 403.9C847.5 405 843.5 406.2 843.2 406.5C842.9 406.8 845.3 407 848.6 407C856.6 407 873 409.5 881.5 412.1C891.9 415.2 901.4 420.6 906.5 426.2C920.6 441.9 918.3 469.7 901.4 486.6C888.2 499.9 867.9 507.5 839 510C826.2 511.1 825.8 511.1 817.9 509.9ZM987.7 509.5C969.4 506 958.1 500.3 946.5 488.6C937.2 479.3 932.6 471.3 928.4 457.5C926 449.4 925.7 446.8 925.6 432.5C925.5 420.5 926 414.4 927.3 408.2C937.4 361.3 974 328 1031.5 313.2C1043.2 310.2 1066.5 306.2 1067.4 307.1C1067.6 307.3 1068 308.3 1068.2 309.3C1068.4 310.8 1067 311.7 1060.8 314C1024 327.5 1001 354.7 992 395.5C990.9 400.4 990 404.8 990 405.2C990 405.6 993.5 402.4 997.8 398.2C1009.4 386.5 1021.8 381 1036.2 381C1060 381 1078.1 396.2 1083.6 420.6C1085.6 429.7 1085.1 445.9 1082.5 455.5C1075.5 482 1055.4 501.3 1027.8 508C1016.6 510.8 998 511.4 987.7 509.5ZM1170.8 510C1135.5 504.4 1111.1 480.6 1101.4 442.2C1096.9 424.6 1096.6 399.4 1100.5 380.6C1104.8 360.2 1112.8 344.9 1126.4 331.4C1134.1 323.8 1137.1 321.5 1145 317.6C1159.3 310.6 1167.7 308.7 1184.5 308.7C1200.1 308.7 1209.1 310.5 1220.7 316C1252.4 330.8 1271 365.3 1271 409.5C1271 445 1258.4 475.6 1236.5 493.3C1228.8 499.5 1216.7 505.4 1206.5 508.1C1197.4 510.4 1179.5 511.4 1170.8 510ZM0 504.7C0 503.4 2.1 500.1 5 496.8L10 491.2L10 435.3L10 379.4L5 374.5C1.9 371.4 0 368.7 0 367.3L0 365L33.5 365L67 365L67 382.2L67 399.5L69.4 393.7C77.8 373.3 99.3 361.9 121 366.4C125 367.3 130.1 369.1 132.5 370.5C138.4 373.9 144.5 381.1 147.2 387.9C149.5 393.4 149.5 394.1 149.8 442.5L150.1 491.4L155.6 497.2C164.9 506.9 166.5 506.5 122.7 506.8L85 507L85 504.4C85 502.9 86.6 499.7 89 496.7L93.1 491.7L92.8 449.4C92.5 407.9 92.5 407 90.4 405C86.3 400.9 75.5 401.5 69.6 406.1L67 408.1L67 449.8L67 491.4L71.6 497.2C79.3 507 81.2 506.5 37.7 506.8L0 507L0 504.7ZM249.9 502.9C256.1 497.1 258 485.6 258.7 449.5C259.5 408.3 257.2 384 251.6 375.8C247.4 369.6 240.6 369.6 236.4 375.8C232.8 381.1 231.1 391.1 229.8 413.7C228.5 437.3 229.9 474.7 232.4 487.7C234 495.6 237.1 502.4 239.7 503.9C242.7 505.6 247.5 505.1 249.9 502.9ZM1011.3 502.8C1014.4 501.2 1018.1 491.4 1019.7 481.1C1020.8 474 1021 465.9 1020.7 449.5C1020.1 421.9 1018.2 413.4 1011.3 408C1007.3 404.9 999.5 405.6 993.7 409.6L989.5 412.6L988.8 422C987.9 434 989.6 474 991.5 484.3C994.5 501.3 1001.6 507.8 1011.3 502.8ZM1188.4 503.6C1194.2 501.2 1197.9 492.6 1200.5 475.5C1202.6 461.2 1204.2 417.2 1203.5 392C1201.9 334.5 1197 315 1184.4 315C1171.1 315 1166.6 334 1165.3 394.5C1164 461.9 1168.8 497.7 1180 503.2C1184.2 505.4 1184.2 505.4 1188.4 503.6ZM417.7 473.5C425.6 470.2 425 474.1 425 422.8L425 376.8L422.1 373.9C415.9 367.8 406.6 371.4 402.2 381.7C398.2 391.2 396.9 400.5 396.3 424.3C395.7 450 396.7 459.7 400.7 467.2C404.6 474.4 410.4 476.5 417.7 473.5ZM686.9 471.9L690 468.8L690 449.5L690 430.1L683.8 432.2C680.3 433.4 676.2 435.2 674.6 436.3C670.3 439.4 667.7 446.1 667.6 455C667.4 469.7 670.4 475 679.1 475C683.1 475 684.3 474.5 686.9 471.9ZM56.5 222.2C51.9 181.7 43.6 148.3 30.1 116.1C25.2 104.5 13 81.4 6 70.6L-0.3 60.9L6.5 45.7C10.3 37.3 15.5 25.8 18.1 20C22.1 11.1 23.1 9.5 25.3 9.2C27.6 8.9 28.3 9.9 33 18.9C42.3 36.6 46.6 40 59.7 40C65.9 40 68.3 39.5 71.5 37.7C77.4 34.3 80.9 28.7 82.4 19.9C83.5 13 83.8 12.5 86.3 12.2C88.6 11.9 89 12.3 89.5 15.7C91.8 29.4 101.2 38 114 38C126.7 38 134.3 30 135.7 15.5C136.2 9.6 136.5 9 138.5 9C140.5 9 140.8 9.6 141.3 15.8C143.4 38 139.9 64.3 132.9 78.3C130.4 83.3 124.6 89.6 120.5 91.8C112.9 95.8 99.4 92.6 92.9 85.3C90.5 82.5 89.6 82 88.9 83.1C88.4 83.9 88 84.9 88 85.4C88 87.5 82.6 93.2 78.8 95.1C76.5 96.3 72 97.5 68.8 97.8C63.9 98.2 63 98.6 63.5 99.9C64.9 103.4 69 121.9 71.2 133.9C73.1 144.5 73.4 150 73.4 169C73.4 193.6 72.7 199 66.9 217.8L63.7 228L60.4 228C57.2 228 57.1 227.9 56.5 222.2ZM249.6 219.2C243 197.3 240.6 179.8 240.7 152.5C240.7 129.4 242.4 111.7 247.1 84.2C248.7 74.7 250 66.7 250 66.4C250 66.1 247.2 67.9 243.8 70.3C235.8 76 229.3 79.2 220.5 81.9C202.3 87.5 179.9 84.5 170.1 75C163.3 68.3 163.2 67 167.4 35.9C169.4 21 171.3 8.3 171.6 7.9C172.6 6.3 174.7 7 178.1 10.1C197.4 27.6 226.6 31.7 250.4 20.2C254.9 18 260.6 14.4 263.1 12.2C266.8 8.9 268 8.3 268.9 9.3C269.5 10.1 270.1 18.6 270.4 31.3C272 98.9 282.6 168.8 294.1 187.6L296 190.8L276.6 209.4C262.2 223.3 256.6 228 254.8 228C252.5 228 252.1 227.2 249.6 219.2ZM557.7 226.5C538.8 221.7 527.2 209.6 522 189.6C521 185.6 519.9 183.2 519.6 184C519.3 184.8 517.7 189.3 516.2 194L513.4 202.5L508.2 204.2C489.4 210.5 465.3 210.4 451.4 203.9C433.4 195.4 429.2 173.3 440.9 148.5C450.1 129 472.5 108.8 499.4 95.9L508.2 91.7L507.6 87.5L506.9 83.4L522.5 72.6C534.5 64.3 538.6 61.9 540.8 62.2L543.5 62.5L544 103.5C544.5 139 544.8 145.1 546.3 148.9C550.5 159.6 555.7 164 566.4 165.9C570.5 166.7 621.8 167 730.3 167L888.3 167L887.6 152.2C887.2 144.1 885.6 119.4 884 97.3C881.8 66.5 880.8 56.4 879.5 53.7L877.9 50.2L891.6 29.5C904 11 905.6 8.9 907.9 9.2C910.3 9.5 911.1 11.6 924.2 51.5C931.8 74.6 938 93.8 938 94.2C938 96.1 935 94.6 929.6 89.9C925.2 86.1 923.5 85.2 922.9 86.2C922.4 86.9 922 96.1 922 106.6L922 125.7L915 142.5C911.1 151.8 908 159.6 908 159.9C908 160.2 910.3 156.4 913.1 151.5C934 115 959.4 91.4 982.5 87C990.2 85.5 999.2 86.8 1007.3 90.4C1028.4 99.8 1041.4 126.7 1039.7 157.2L1039.1 167L1050.3 167C1056.5 167 1062 166.6 1062.7 166.2C1063.7 165.6 1063.7 163.8 1062.8 158.5C1059.1 134.5 1070.8 104.6 1090.3 88.1C1103.4 77 1119.2 74.6 1132.1 81.7C1141.7 86.9 1148.4 97.3 1152.7 113.9C1156 126.9 1156.2 145.6 1153.1 157.4C1151.9 161.8 1151.3 165.6 1151.6 165.9C1152.6 167 1198.1 166.3 1211.5 165.1C1227 163.7 1244.9 161.1 1246.8 160.1C1247.7 159.6 1243.4 155.2 1232.8 145.7C1224.4 138.3 1216.5 131.3 1215.3 130.3L1213.1 128.5L1229.8 101C1245.5 75.3 1246.8 73.5 1249.7 73.2C1252.7 72.9 1252.9 73.1 1256.4 81.7C1272.9 120.9 1275.5 168.5 1263.4 206.7L1260.8 214.8L1255.7 216.9C1248.1 220 1232.8 223.7 1219.8 225.6C1202.5 228.1 1162.2 228.7 1150 226.6C1133.8 223.8 1120.5 219 1111.8 212.8L1109.1 210.9L1107.1 214.8C1105.2 218.4 1104.4 218.9 1095.7 221.8C1070.9 230.1 1041.8 230.1 1010.5 222.1C1001.3 219.7 998.6 219.4 994 220.1C967.1 224.2 855.5 226.9 686 227.5C580.1 227.9 562.7 227.8 557.7 226.5ZM334.4 150.9L316.5 133L333.8 115.8L351 98.5L368.5 116C378.1 125.6 385.9 133.8 385.8 134.1C385.6 134.5 378 142.4 368.9 151.8L352.3 168.9L334.4 150.9ZM939 166.5C963.8 165.5 990.4 162.5 1015 157.9L1026.4 155.7L1022 151.8C1019.6 149.7 1014 146.1 1009.6 143.9C983.4 131 951 137.5 920.8 161.9C917.6 164.4 915 166.9 915 167.3C915 167.7 917.1 167.8 919.8 167.6C922.4 167.3 931 166.8 939 166.5ZM1118.6 163.4C1125.2 160.7 1143 149.7 1143 148.4C1143 146.6 1136.4 141.4 1130.4 138.4C1116.2 131.4 1095.5 130.3 1078.5 135.5C1070 138.1 1069.8 138.4 1075.5 143.6C1083.8 151.4 1097.4 159.7 1108 163.6C1112.7 165.3 1114.1 165.3 1118.6 163.4ZM510 152C513 151.3 515.9 150.4 516.3 150C516.8 149.6 516.5 144.7 515.6 139.2C514.7 133.8 514 129 514 128.6C514 127.4 510.3 128 496.4 131.4C480.9 135.3 460.2 141.8 454.5 144.7L450.8 146.7L455.9 148.9C463.9 152.3 476.7 154 491.5 153.6C498.6 153.4 507 152.6 510 152ZM1212.2 48L1199 36.1L1211.6 22C1218.6 14.3 1224.5 8 1224.7 8C1225.6 8 1251 31.4 1251 32.2C1251 33.2 1227 60 1226 60C1225.6 60 1219.4 54.6 1212.2 48ZM1077.3 43.7L1064.2 30.5L1076.9 17.2C1083.9 10 1090 4 1090.6 4C1091.1 4 1097.1 9.6 1104 16.5L1116.5 29L1129.2 16.3L1142 3.5L1155.5 17L1169 30.5L1155.5 44L1142 57.5L1129 44.5L1116 31.5L1103.2 44.3L1090.5 57L1077.3 43.7ZM454.2 39.7L441 26.5L454.5 13L468 -0.5L480.8 12.3L493.5 25L506.3 12.3L519 -0.5L532.5 13L546 26.5L532.5 40L519 53.5L506.2 40.7L493.5 28L481 40.5C474.1 47.4 468.3 53 468 53C467.7 53 461.5 47 454.2 39.7Z"/></svg>`;
+const MARK_SVG = `<svg viewBox="0 0 572 570" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M-0 461.5L0 353L142.2 353L284.5 353L196.2 264.7L108 176.5L196.5 88L285 -0.5L373.2 87.8L461.5 176L373.7 263.8C325.5 312 286 351.9 286 352.3C286 352.7 329.5 352.9 382.8 352.8L479.5 352.5L488 350.1C533 337.7 563.3 303.5 570.5 257C571.6 249.5 571.8 257.1 571.9 320.6C572 395.3 571.4 411.1 567.9 428.3C563.3 451 552.3 476.5 539.2 495C531 506.5 514.3 524.1 503.5 532.6C481.5 549.7 456.6 561.2 428.2 567.2L417.5 569.5L208.8 569.8L-0 570L-0 461.5Z"/></svg>`;
+
+/* =====================================================================
+   البيانات والأسئلة
+   ===================================================================== */
+const YEARS = Array.from({length: 13}, (_, i) => String(2026 - i));
+const CITIES = ['الرياض','جدة','مكة المكرمة','المدينة المنورة','الدمام','الخبر','القصيم','أبها','تبوك','مدينة أخرى'];
+const SCOPE = ['الأعمال الإنشائية (العظم)','التشطيبات','الديكور الداخلي','التصميم الداخلي','الواجهات','الأعمال المعدنية','المنشآت الحديدية','تنسيق المواقع','التأثيث','إدارة المشروع','التنفيذ الكامل (تسليم مفتاح)'];
+const OFF = 'لا يُعرض';
+
+const STEPS = [
+  { id:'start', title:'البداية', nav:'البداية',
+    lead:`يساعدنا هذا النموذج على إعداد محتوى دقيق لبروفايل ${CONFIG.client.name} الجديد. عبّأنا مسبقاً كل ما ورد في البروفايل الحالي، فلا يلزمكم إلا التأكيد أو التصحيح وإكمال الناقص.`,
+    perks:[['نحو 15 دقيقة','يمكن تقسيمها على أكثر من جلسة'],['أغلب الإجابات بنقرة','والبيانات المعروفة معبّأة مسبقاً'],['حفظ تلقائي','على هذا الجهاز حتى الإرسال']],
+    fields:[
+      {id:'contact_name', type:'text', label:'اسم من يعبّئ النموذج', req:true, block:true, half:true},
+      {id:'contact_phone', type:'tel', label:'رقم الجوال للتواصل', req:true, block:true, half:true, placeholder:'05XXXXXXXX'},
+      {id:'contact_role', type:'chips', label:'صفته في الشركة', options:['المالك','المدير العام','مدير المشاريع','مسؤول التسويق','أخرى'], other:'أخرى'},
+      {id:'contact_email', type:'email', label:'البريد الإلكتروني', hint:'لنرسل إليكم المسودة الأولى للمراجعة.', half:true, placeholder:'name@company.com'}
+    ]},
+
+  { id:'identity', title:'الهوية والكيان النظامي', nav:'الهوية النظامية',
+    lead:'نبدأ بتوحيد اسم الشركة وصفتها النظامية، فهذا أول ما يتحقق منه العميل.',
+    fields:[
+      {id:'entity', type:'chips', stack:true, req:true, s:'العلاقة مع ابتكار المحيط',
+       label:'ما العلاقة بين «جلف إينوفيشن» و«ابتكار المحيط»؟',
+       ctx:'<span class="tag">لماذا نسأل؟</span>في البروفايل الحالي السجل التجاري باسم <b>شركة جلف إينوفيشن</b>، أما شهادة الضريبة وإثبات العنوان الوطني ولوحة موقع مشروع صرة فباسم <b>شركة ابتكار المحيط المحدودة</b>، وثلاثة نصوص مشاريع تقول «Innovation Al-Muheet».',
+       options:['الكيان نفسه، وتغيّر اسمه من «ابتكار المحيط» إلى «جلف إينوفيشن»','شركتان قائمتان يملكهما المالك نفسه','«ابتكار المحيط» شركة سابقة لم تعد تعمل','أخرى'], other:'أخرى'},
+      {id:'old_name', type:'chips', req:true, s:'ذكر الاسم السابق', label:'هل نذكر الاسم السابق في البروفايل؟',
+       options:['نعم، بعبارة «سابقاً: ابتكار المحيط»','لا، نكتفي بالاسم الحالي'],
+       showIf:a=>String(a.entity||'').startsWith('الكيان نفسه')},
+      {id:'attrib', type:'chips', stack:true, req:true, s:'مشاريع ابتكار المحيط', label:'كيف نعرض المشاريع المنفذة باسم «ابتكار المحيط»؟',
+       options:['ضمن سابقة أعمال جلف إينوفيشن دون تمييز','ضمن سابقة الأعمال مع توضيح أنها نُفذت باسم ابتكار المحيط','نحذفها من البروفايل'],
+       showIf:a=>a.entity && !String(a.entity).startsWith('الكيان نفسه') && a.entity!=='أخرى'},
+      {id:'name_ar', type:'chips', req:true, s:'الاسم العربي', label:'الاسم العربي المعتمد', hint:'ورد الاسم في الملف الحالي بثلاث صيغ مختلفة.',
+       options:['جلف إينوفيشن (كما في السجل التجاري)','جلف اينوفيشن','جلف انوفيشن','صيغة أخرى'], other:'صيغة أخرى', pre:'جلف إينوفيشن (كما في السجل التجاري)'},
+      {id:'name_en', type:'chips', req:true, s:'الاسم الإنجليزي', label:'الاسم الإنجليزي المعتمد', hint:'ورد في الملف الحالي بأربع صيغ.',
+       options:['Gulf Innovation Contracting Co.','Gulf Innovation Company','Gulf Innovation Construction Company','صيغة أخرى'], other:'صيغة أخرى'},
+      {id:'cr', type:'text', label:'الرقم الوطني الموحد للسجل التجاري', pre:'7034918875', ltr:true, half:true, s:'الرقم الوطني الموحد'},
+      {id:'founded', type:'select', req:true, label:'سنة التأسيس', options:YEARS, half:true, hint:'شهادة السجل في الملف الحالي مؤرخة 2023.'},
+      {id:'exp_mode', type:'chips', stack:true, req:true, s:'صياغة الخبرة',
+       label:'يذكر البروفايل الحالي «أكثر من خمس سنوات خبرة». كيف نصوغ الخبرة؟',
+       options:['نذكر سنة التأسيس فقط','نذكر سنة التأسيس وخبرة المؤسس بالسنوات','نذكر الخبرة المتراكمة لفريق العمل بالسنوات']},
+      {id:'exp_years', type:'number', req:true, label:'عدد سنوات الخبرة', suffix:'سنة', half:true,
+       showIf:a=>a.exp_mode && a.exp_mode!=='نذكر سنة التأسيس فقط'}
+    ]},
+
+  { id:'contact', title:'التواصل والعنوان', nav:'التواصل',
+    lead:'لا يحتوي البروفايل الحالي إلا على عنوان المكتب. عبّأنا الرقمين الظاهرين على لوحة أحد مشاريعكم، فأكدوهما أو صححوهما.',
+    fields:[
+      {id:'phone1', type:'tel', req:true, label:'الرقم الرئيسي', pre:'0550583636', half:true},
+      {id:'phone2', type:'tel', label:'رقم إضافي', pre:'0538358081', half:true},
+      {id:'whatsapp', type:'chips', req:true, label:'رقم واتساب الأعمال', options:['الرقم الرئيسي','الرقم الإضافي','رقم آخر','لا نعرض واتساب'], other:'رقم آخر'},
+      {id:'email', type:'email', req:true, label:'البريد الإلكتروني للشركة', half:true, placeholder:'info@'},
+      {id:'website', type:'url', label:'الموقع الإلكتروني', half:true, placeholder:'https://'},
+      {id:'socials', type:'multi', label:'حسابات التواصل الاجتماعي', s:'حسابات التواصل', hint:'اختاروا الحسابات الموجودة، واكتبوا اسم المستخدم أو الرابط.',
+       options:['لينكدإن','إنستغرام','إكس','سناب شات','تيك توك','يوتيوب'], detail:'اسم المستخدم أو الرابط', ltrDetail:true},
+      {id:'city', type:'select', label:'المدينة', options:CITIES, pre:'الرياض', half:true},
+      {id:'district', type:'text', label:'الحي', pre:'الياسمين', half:true},
+      {id:'address', type:'text', label:'العنوان التفصيلي', pre:'شارع أنس بن مالك، فوق مجمع الربيع، الدور الرابع، مكتب 28'},
+      {id:'short_addr', type:'text', label:'العنوان الوطني المختصر', pre:'RAYA3610', ltr:true, half:true},
+      {id:'maps', type:'url', label:'رابط الموقع على خرائط Google', half:true, placeholder:'https://maps.app.goo.gl/…'}
+    ]},
+
+  { id:'docs', title:'الوثائق والاعتمادات', nav:'الوثائق',
+    lead:'يعرض البروفايل الحالي وثائق تسجيل فقط، وبعضها منتهٍ أو بالاسم السابق. حدّدوا ما يتوفر لديكم ليظهر في البروفايل الجديد.',
+    fields:[
+      {id:'docs', type:'multi', stack:true, label:'ما الوثائق المتوفرة لديكم؟', s:'الوثائق المتوفرة',
+       options:['شهادة تصنيف المقاولين','عضوية الهيئة السعودية للمقاولين','التسجيل في منصة مقاول','شهادة ISO','عضوية الغرفة التجارية','شهادة الزكاة','شهادة نطاقات (السعودة)','رخصة بلدي','تأهيل لدى جهات حكومية أو شركات كبرى'],
+       detailFor:{'شهادة تصنيف المقاولين':'المجال والدرجة','شهادة ISO':'رقم المعيار، مثل ISO 9001','تأهيل لدى جهات حكومية أو شركات كبرى':'اذكروا الجهات'}},
+      {id:'docs_update', type:'chips', stack:true, req:true, s:'وثائق ابتكار المحيط',
+       label:'شهادة الضريبة وإثبات العنوان في الملف الحالي باسم «ابتكار المحيط»، وإثبات العنوان انتهى في 22/02/2024. ماذا نفعل بهما؟',
+       options:['سنرسل نسخاً محدّثة بالاسم الحالي','نحذفهما من البروفايل']},
+      {id:'docs_show', type:'chips', stack:true, req:true, s:'طريقة عرض الوثائق', label:'كيف تُعرض الوثائق في البروفايل؟',
+       options:['صور الوثائق كاملة','شعارات الجهات مع أرقام الشهادات فقط','لا تُعرض']}
+    ]},
+
+  { id:'team', title:'الفريق والإمكانات', nav:'الفريق',
+    lead:'الأرقام تمنح البروفايل مصداقية أكبر من الأوصاف، وتكفي الأرقام التقريبية.',
+    fields:[
+      {id:'staff', type:'number', req:true, label:'إجمالي الموظفين', half:true},
+      {id:'engineers', type:'number', req:true, label:'المهندسون', half:true},
+      {id:'technicians', type:'number', label:'الفنيون والعمالة', half:true},
+      {id:'admins', type:'number', label:'الإداريون', half:true},
+      {id:'depts', type:'multi', req:true, label:'الأقسام القائمة فعلاً', s:'الأقسام',
+       hint:'سنعيد بناء الهيكل التنظيمي على أساسها، ففي الهيكل الحالي تكرار وأقسام ناقصة.',
+       options:['الإدارة الفنية','إدارة المشاريع','المكتب الفني','السلامة والصحة المهنية','ضبط الجودة','المشتريات','المالية','الموارد البشرية','الشؤون القانونية','العلاقات العامة','التصميم','المستودعات والمعدات']},
+      {id:'equip', type:'chips', req:true, label:'هل تملكون معدات خاصة؟', options:['نعم','لا، نستأجر عند الحاجة'], s:'المعدات'},
+      {id:'equip_list', type:'multi', label:'المعدات المملوكة', s:'قائمة المعدات', detail:'العدد',
+       options:['رافعات','مضخات خرسانة','خلاطات خرسانة','حفارات وشيولات','شدات معدنية','سقالات','مولدات كهرباء','معدات لحام وقص','شاحنات ونقل','ورشة حدادة','ورشة نجارة'],
+       showIf:a=>a.equip==='نعم'},
+      {id:'gm_years', type:'number', req:true, label:'سنوات خبرة المدير العام', suffix:'سنة', half:true},
+      {id:'gm_photo', type:'chips', req:true, label:'صورة احترافية للمدير العام', options:['متوفرة','غير متوفرة','لا نريد صورة'], half:true, s:'صورة المدير العام'},
+      {id:'gm_group', type:'text', label:'الاسم الصحيح للمجموعة الواردة في سيرة المدير العام', s:'اسم المجموعة في سيرة المدير',
+       hint:'وردت في البروفايل الحالي بصيغة «Rival Residential, Educational Companies Group» وهي غير واضحة.'}
+    ]},
+
+  { id:'services', title:'الخدمات والقطاعات', nav:'الخدمات',
+    lead:'حدّدنا مسبقاً الخدمات والقطاعات التي تظهر فعلاً في مشاريعكم. أضيفوا ما ينقص واحذفوا ما لا يلزم.',
+    fields:[
+      {id:'services', type:'multi', req:true, label:'خدماتكم', s:'الخدمات',
+       options:['الأعمال الإنشائية (العظم)','التشطيبات الداخلية','الديكور الداخلي','التصميم الداخلي','الواجهات','الأعمال المعدنية والمنشآت الحديدية','المستودعات والمباني الصناعية','تنسيق المواقع','إدارة المشاريع','الأعمال الكهروميكانيكية (MEP)','الترميم والصيانة','تسليم مفتاح','خدمة أخرى'], other:'خدمة أخرى',
+       pre:['الأعمال الإنشائية (العظم)','التشطيبات الداخلية','الديكور الداخلي','الواجهات','الأعمال المعدنية والمنشآت الحديدية','المستودعات والمباني الصناعية','تنسيق المواقع','إدارة المشاريع']},
+      {id:'main_service', type:'chips', req:true, label:'الخدمة التي تريدون أن تُعرفوا بها أولاً', s:'الخدمة الأولى',
+       optionsFrom:a=>(a.services||[]).filter(x=>x!=='خدمة أخرى').concat((a.services||[]).includes('خدمة أخرى') && a.services__o ? [a.services__o] : [])},
+      {id:'metal', type:'chips', stack:true, req:true, s:'عبارة الريادة في الأعمال المعدنية',
+       label:'يقول البروفايل الحالي إن الشركة «رائدة في الإنشاءات المعدنية». ما الصحيح؟',
+       options:['صحيح، ولدينا مشاريع تثبت ذلك','الأعمال المعدنية إحدى خدماتنا وليست الأولى','نحذف عبارة الريادة']},
+      {id:'sectors', type:'multi', req:true, label:'القطاعات التي عملتم فيها', s:'القطاعات',
+       hint:'ذكر البروفايل الحالي القطاع السياحي ولا يوجد فيه مشروع سياحي، فاختاروه إن كان لديكم مشروع فعلاً.',
+       options:['سكني','إداري ومكاتب','تجاري','صناعي ومستودعات','محطات الوقود','ديني (مساجد)','سياحي وفندقي','حكومي','تعليمي','صحي','قطاع آخر'], other:'قطاع آخر',
+       pre:['سكني','إداري ومكاتب','تجاري','صناعي ومستودعات','محطات الوقود']}
+    ]},
+
+  { id:'projects', title:'المشاريع', nav:'المشاريع', custom:'projects',
+    lead:'هذه مشاريعكم كما وردت في البروفايل الحالي. افتحوا كل مشروع، وأكملوا الحقول الموسومة «ناقص»، وأجيبوا عن السؤال الخاص به إن وُجد. يمكنكم استبعاد أي مشروع أو إضافة مشروع جديد.' },
+
+  { id:'clients', title:'العملاء والشركاء', nav:'العملاء', custom:'clients',
+    lead:'في صفحة «شركاؤنا» الحالية 14 شعاراً، أربعة منها فقط لها مشاريع في الملف. حدّدوا صفة كل جهة؛ فالعمل من الباطن مع شركة كبرى ميزة تستحق الذكر، لكن ذكرها «شريكاً» دون توضيح قد يُفهم خطأً.',
+    fields:[
+      {id:'clients_title', type:'chips', label:'عنوان هذه الصفحة في البروفايل الجديد', options:['عملاؤنا','شركاؤنا','عملاؤنا وشركاؤنا'], pre:'عملاؤنا', s:'عنوان الصفحة'},
+      {id:'add_clients', type:'multi', label:'جهات تظهر في مشاريعكم وليس لها شعار في الصفحة. أيّها نضيف؟', s:'جهات تُضاف',
+       options:['شركة صرة العقارية','بلاك كيوب للاستشارات الهندسية','أمان القابضة','مكتب فخر البناء (استشاري)','مكتب العربي للاستشارات الهندسية (استشاري)','جهة أخرى'], other:'جهة أخرى',
+       pre:['شركة صرة العقارية','بلاك كيوب للاستشارات الهندسية']}
+    ]},
+
+  { id:'extra', title:'محتوى إضافي', nav:'محتوى إضافي',
+    lead:'عناصر يتوقعها العميل في بروفايل شركة مقاولات، وتنقص البروفايل الحالي.',
+    fields:[
+      {id:'values', type:'multi', max:5, req:true, label:'قيم الشركة (حتى خمس قيم)', s:'القيم',
+       hint:'في البروفايل الحالي «Development» مكررة، و«Time» و«Cost» معايير أداء لا قيم.',
+       options:['الجودة','السلامة','الالتزام بالمواعيد','الشفافية','الالتزام','الابتكار','الكفاءة في التكلفة','الدقة','المسؤولية','التطوير المستمر','روح الفريق','رضا العميل'],
+       pre:['الجودة','الالتزام بالمواعيد','الشفافية','الالتزام','الابتكار']},
+      {id:'hse', type:'chips', stack:true, req:true, label:'السلامة والصحة المهنية', s:'السلامة',
+       options:['لدينا سياسة سلامة مكتوبة ومسؤول سلامة','نطبق إجراءات سلامة دون سياسة مكتوبة','لا نريد إبراز هذا الجانب']},
+      {id:'safe_hours', type:'number', label:'ساعات العمل دون إصابات (إن توفرت)', suffix:'ساعة', half:true,
+       showIf:a=>a.hse==='لدينا سياسة سلامة مكتوبة ومسؤول سلامة'},
+      {id:'qa', type:'chips', stack:true, req:true, label:'ضبط الجودة', s:'الجودة',
+       options:['لدينا إجراءات فحص واستلام موثقة','نتابع الجودة عبر المهندسين دون إجراءات موثقة','لا نريد إبراز هذا الجانب']},
+      {id:'letters', type:'chips', req:true, label:'هل لديكم خطابات شكر أو شهادات إنجاز من العملاء؟', s:'خطابات الشكر', options:['نعم','لا يوجد حالياً']},
+      {id:'letters_from', type:'text', label:'من أي جهات؟', showIf:a=>a.letters==='نعم', s:'جهات الخطابات'},
+      {id:'lang', type:'chips', stack:true, req:true, label:'لغة البروفايل الجديد', hint:'البروفايل الحالي بالإنجليزية فقط.', s:'لغة البروفايل',
+       options:['الإنجليزية فقط','العربية فقط','نسختان منفصلتان: عربية وإنجليزية','ملف واحد ثنائي اللغة']},
+      {id:'usage', type:'multi', req:true, label:'كيف سيُستخدم البروفايل؟', s:'استخدام البروفايل',
+       hint:'إن اخترتم واتساب فسنجهّز نسخة خفيفة الحجم إلى جانب نسخة الطباعة.',
+       options:['يُرسل PDF عبر البريد','يُرسل عبر واتساب','يُطبع','يُعرض في الاجتماعات','يُرفق في المناقصات']},
+      {id:'notes', type:'textarea', label:'أي ملاحظات أخرى', s:'ملاحظات عامة'}
+    ]},
+
+  { id:'files', title:'الملفات', nav:'الملفات',
+    lead:'لا يتسع النموذج للملفات الكبيرة، لذا نطلب رابط مجلد واحد يجمع الشعار والصور والوثائق.',
+    fields:[
+      {id:'folder', type:'url', label:'رابط المجلد', s:'رابط المجلد',
+       hint:'Google Drive أو OneDrive أو Dropbox أو WeTransfer. تأكدوا أن الرابط يسمح بالعرض لمن يملكه.', placeholder:'https://'},
+      {id:'folder_items', type:'multi', stack:true, label:'ما الذي يحتويه المجلد (أو سيحتويه)؟', s:'محتوى المجلد',
+       options:['شعار الشركة بصيغة مفتوحة (AI أو SVG أو PDF)','صورة المدير العام','صور المشاريع الأصلية بدقة عالية','صور التصاميم (الرندر)','الوثائق المحدّثة','شعارات العملاء','نصوص البروفايل الأصلية (Word)','خطابات الشكر وشهادات الإنجاز']},
+      {id:'folder_later', type:'chips', req:true, label:'المجلد غير جاهز الآن؟', s:'إرسال المجلد لاحقاً',
+       options:['سنرسل الرابط لاحقاً عبر واتساب','سنرسل الرابط لاحقاً عبر البريد'], showIf:a=>!a.folder}
+    ]},
+
+  { id:'review', title:'المراجعة والإرسال', nav:'المراجعة والإرسال', custom:'review',
+    lead:'راجعوا إجاباتكم قبل الإرسال. يمكنكم تعديل أي قسم بالضغط على «تعديل».' }
+];
+
+/* حقول كل مشروع */
+const PF = [
+  {id:'include', type:'chips', label:'هل يُعرض المشروع في البروفايل الجديد؟', options:['يُعرض', OFF], req:true, s:'العرض'},
+  {id:'name', type:'text', label:'اسم المشروع', req:true, half:true, s:'الاسم'},
+  {id:'client', type:'text', label:'العميل أو المالك', req:true, half:true, s:'العميل'},
+  {id:'city', type:'select', label:'المدينة', options:CITIES, req:true, half:true, s:'المدينة'},
+  {id:'district', type:'text', label:'الحي', req:true, half:true, s:'الحي'},
+  {id:'scope', type:'multi', label:'نطاق عملكم', options:SCOPE, req:true, s:'النطاق'},
+  {id:'details', type:'text', label:'مكونات المشروع', hint:'مثل: قبو + أرضي + 8 أدوار، أو عدد المداخل أو المستودعات.', s:'المكونات'},
+  {id:'role', type:'chips', label:'صفتكم في المشروع', options:['مقاول رئيسي','مقاول من الباطن'], req:true, s:'الصفة'},
+  {id:'main_contractor', type:'text', label:'اسم المقاول الرئيسي', showIf:p=>p.role==='مقاول من الباطن', s:'المقاول الرئيسي'},
+  {id:'value', type:'money', label:'قيمة العقد', suffix:'ريال', req:true, half:true, s:'القيمة'},
+  {id:'area', type:'number', label:'المساحة', suffix:'م²', req:true, half:true, s:'المساحة'},
+  {id:'area_type', type:'chips', label:'نوع المساحة', options:['مساحة الأرض','مسطح البناء'], req:true, half:true, s:'نوع المساحة'},
+  {id:'status', type:'chips', label:'حالة المشروع', options:['منجز','قيد التنفيذ'], req:true, half:true, s:'الحالة'},
+  {id:'year', type:'select', label:p=>p.status==='قيد التنفيذ'?'سنة البدء':'سنة الإنجاز', options:YEARS, req:true, half:true, s:'السنة'},
+  {id:'duration', type:'number', label:'مدة التنفيذ', suffix:'شهراً', half:true, s:'المدة'},
+  {id:'consultant', type:'text', label:'الاستشاري المشرف', s:'الاستشاري'},
+  {id:'notes', type:'textarea', label:'تصحيحات أو ملاحظات', s:'ملاحظات'}
+];
+
+/* المشاريع المعبّأة مسبقاً من البروفايل الحالي */
+const PROJECTS = [
+  {key:'darco_admin',
+   pre:{name:'مبنى داركو الإداري', client:'داركو العقارية', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'قبو + أرضي + 8 أدوار متكررة', value:'12000000', area:'1150'},
+   note:'كُتبت القيمة في البروفايل الحالي «تقديرية». والمساحة 1,150 م² صغيرة لمبنى من عشرة مستويات إن كانت مسطح البناء، فتأكدوا منها ومن نوعها.',
+   q:[{id:'aman', s:'العلاقة مع أمان القابضة', label:'تحمل صور المبنى المنفذ عبارة «أمان القابضة – المقر الرئيسي». ما العلاقة بين داركو وأمان القابضة؟',
+       options:['داركو تابعة لأمان القابضة','المبنى صار مقراً لأمان القابضة بعد البيع أو التأجير','أخرى'], other:'أخرى'}]},
+  {key:'darco_interior',
+   pre:{name:'التصميم الداخلي لمقر داركو', client:'داركو العقارية'},
+   note:'النص الحالي لهذا المشروع عام ويصف أهداف العميل لا عملكم، وفيه كلمة «likely» التي تدل على نص منقول. نحتاج إلى بياناته الفعلية.',
+   q:[{id:'role', s:'دوركم', label:'ما دوركم في هذا المشروع؟', options:['التصميم فقط','التنفيذ فقط','التصميم والتنفيذ']},
+      {id:'same', s:'الموقع', label:'هل هذا المشروع هو الديكور الداخلي لمبنى داركو الإداري نفسه؟', options:['نعم','لا، موقع آخر']},
+      {id:'imgs', s:'عرض الصور', label:'في البروفايل صور تصميمية (رندر) وصور واقعية لا تتطابق. كيف نعرضها؟', options:['الصور الواقعية فقط','الاثنتان مع تمييز «تصميم» و«تنفيذ»']}]},
+  {key:'rimal2',
+   pre:{name:'مشروع الرمال 2 السكني', client:'داركو العقارية', district:'الرمال', value:'18000000', area:'6400'},
+   q:[{id:'entr', s:'قيمة المداخل', label:'هل قيمة مداخل الرمال 2 (850,000 ريال) داخلة ضمن قيمة هذا المشروع؟', options:['داخلة ضمنها','عقد منفصل']},
+      {id:'r1', s:'الرمال 1', label:'يذكر البروفايل أن «الرمال 1» مشروع منجز، ولا صفحة له. هل نضيفه مشروعاً مستقلاً؟', options:['نعم، وسأضيف بياناته في آخر القائمة','لا، يكفي ذكر مداخله']}]},
+  {key:'rimal1_entr',
+   pre:{name:'مداخل مباني الرمال 1', client:'داركو العقارية', district:'الرمال', scope:['التشطيبات','الديكور الداخلي'], details:'5 مداخل', value:'550000'}},
+  {key:'rimal2_entr',
+   pre:{name:'مداخل مباني الرمال 2 وتنسيق الموقع', client:'داركو العقارية', district:'الرمال', scope:['التشطيبات','الديكور الداخلي','تنسيق المواقع'], details:'6 مداخل', value:'850000'}},
+  {key:'qurtuba_entr',
+   pre:{name:'مداخل مباني قرطبة', scope:['التصميم الداخلي','التشطيبات','الديكور الداخلي']},
+   note:'العنوان يذكر «قرطبة» والنص يقول إن المشروع في حي الرمال، فاكتبوا الحي الصحيح. وتظهر في الصور علامة داركو، لكن النص لا يذكر العميل.'},
+  {key:'rawabi',
+   pre:{name:'مبنى الروابي المكتبي', client:'شركة إنماء الروابي', district:'النموذجية', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], value:'3000000', area:'700', consultant:'مكتب العربي للاستشارات الهندسية'},
+   note:'تظهر في إحدى صور المشروع أعمال بتاريخ أكتوبر 2023.'},
+  {key:'villa',
+   pre:{name:'فيلا سكنية في حي الملك عبدالله', district:'الملك عبدالله'},
+   note:'النص المرافق لهذه الفيلا في البروفايل الحالي يخص مشروعاً آخر (مسجد الجاسر)، فلا توجد للفيلا أي بيانات. أكملوها هنا.'},
+  {key:'jasser', include:'',
+   pre:{name:'مسجد الجاسر', district:'السعادة', area:'600'},
+   note:'ورد هذا المشروع نصاً في صفحة الفيلا، دون صور. قرّروا هل يُعرض.',
+   q:[{id:'photos', s:'الصور', label:'هل تتوفر صور لهذا المشروع؟', options:['نعم، سأضعها في مجلد الملفات','لا تتوفر']}]},
+  {key:'western',
+   pre:{name:'مبنى تجاري على الطريق الدائري الغربي', client:'مجموعة زيد الحسين', district:'السويدي', scope:['التنفيذ الكامل (تسليم مفتاح)'], value:'3500000', area:'1300'},
+   note:'عنوانه الحالي «Western Ring Road» يوحي بمشروع طرق، فاقترحنا الاسم أعلاه. والنص يقول إن المشروع قيد التنفيذ، بينما تُظهر الصور مبنى مكتملاً.'},
+  {key:'aknan',
+   pre:{name:'مشروع أكنان', district:'قرطبة', scope:['الأعمال الإنشائية (العظم)','الواجهات','الأعمال المعدنية'], value:'7500000', area:'1200', status:'منجز'},
+   q:[{id:'type', s:'نوع المبنى', label:'عنوانه الحالي «Aknan Residential». ما نوع المبنى؟', options:['سكني','تجاري أو مكتبي','متعدد الاستخدامات']}]},
+  {key:'shaddi',
+   pre:{name:'محطة وقود الشدي', client:'محطات لتر (LITER)', district:'الحمراء', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'أرضي + دوران (إدارة وسوق وخدمات)', value:'3600000', area:'600'}},
+  {key:'shohadaa',
+   pre:{name:'محطة وقود الشهداء'},
+   note:'هذا المشروع صور فقط بلا أي بيانات، وصوره موضوعة بين صفحتي محطة الشدي.',
+   q:[{id:'sep', s:'استقلال المشروع', label:'هل هذه الصور لمشروع مستقل فعلاً؟', options:['نعم، مشروع مستقل','لا، الصور لمحطة الشدي']}]},
+  {key:'blackcube',
+   pre:{name:'مكتب بلاك كيوب للاستشارات الهندسية', client:'بلاك كيوب للاستشارات الهندسية', district:'العليا', scope:['التشطيبات','الديكور الداخلي','التأثيث'], value:'570000', area:'200'}},
+  {key:'surra',
+   pre:{name:'مستودعات صرة', client:'شركة صرة العقارية', district:'السلي', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'مجمع مستودعات ومبانٍ تجارية ومكتبية ومبنى سكني', value:'122000000', area:'302000', consultant:'مكتب فخر البناء للاستشارات الهندسية (Pride Build)'},
+   note:'أكبر مشاريعكم، ويعادل نحو 69% من مجموع القيم المذكورة في البروفايل، لذا نحتاج إلى دقة بياناته.',
+   q:[{id:'val', s:'طبيعة القيمة', label:'هل 122,000,000 ريال قيمة عقدكم أم القيمة الإجمالية للمشروع؟', hint:'إن كانت القيمة الإجمالية، فاكتبوا قيمة عقدكم في حقل «قيمة العقد» أدناه.', options:['قيمة عقدنا','القيمة الإجمالية للمشروع']},
+      {id:'fuel', s:'محطة الوقود', label:'لوحة الموقع تذكر «مشروع مستودعات ومحطة وقود». هل المحطة ضمن نطاق عملكم؟', options:['نعم','لا']}]},
+  {key:'habib',
+   pre:{name:'مستودعات الحبيب', client:'أحمد الحبيب', district:'النور', scope:['الأعمال الإنشائية (العظم)','التشطيبات'], details:'أرضي + مبنى إداري', value:'5000000', area:'10000'},
+   note:'كُتب الحي في البروفايل «AlNor»، فتأكدوا من اسمه العربي الصحيح.',
+   q:[{id:'consent', s:'ذكر اسم العميل', label:'العميل فرد. هل يوافق على ذكر اسمه في البروفايل؟', options:['نعم','لا، نكتفي بعبارة «عميل خاص»']}]}
+];
+
+const LOGOS = [
+  {id:'darco', name:'داركو (DARCO)', pre:'عميل مباشر'},
+  {id:'liter', name:'لتر (LITER)', pre:'عميل مباشر'},
+  {id:'zaid', name:'مجموعة زيد الحسين', pre:'عميل مباشر'},
+  {id:'enma', name:'إنماء الروابي', pre:'عميل مباشر'},
+  {id:'alargan', name:'الأرجان العالمية العقارية'},
+  {id:'scope', name:'سكوب إنترناشونال'},
+  {id:'jomaih', name:'الجميح القابضة'},
+  {id:'united', name:'شركة المقاييس المتحدة'},
+  {id:'nesma', name:'نسما (NESMA)'},
+  {id:'irf', name:'مصنع الراتنجات الصناعية'},
+  {id:'aldrees', name:'الدريس'},
+  {id:'mazaya', name:'مزايا (MAZAYA)'},
+  {id:'seal', name:'الشعار الدائري الأحمر (ISI)'},
+  {id:'etihad', name:'الاتحاد للمقاولات'}
+];
+const LOGO_OPTS = ['عميل مباشر','عملنا معه من الباطن','مورّد أو شريك','يُحذف'];
+
+
+
+/* =====================================================================
+   الحالة والحفظ
+   ===================================================================== */
+const clone = o => JSON.parse(JSON.stringify(o));
+const byKey = k => PROJECTS.find(p => p.key === k);
+
+function defaults(){
+  const a = {};
+  STEPS.forEach(s => (s.fields||[]).forEach(f => { if (f.pre !== undefined) a[f.id] = clone(f.pre); }));
+  a.projects = PROJECTS.map(p => Object.assign({key:p.key, include: p.include !== undefined ? p.include : 'يُعرض', city:'الرياض'}, clone(p.pre)));
+  a.logos = {};
+  LOGOS.forEach(l => { if (l.pre) a.logos[l.id] = l.pre; });
+  return a;
+}
+const PRE = defaults();
+let A = defaults();
+const UI = { cur:0, visited:new Set([0]), open:new Set(), resetArmed:false, busy:false };
+
+function load(){
+  try{
+    const raw = localStorage.getItem(CONFIG.storageKey);
+    if(!raw) return false;
+    const d = JSON.parse(raw);
+    if(d && d.A){
+      A = Object.assign(defaults(), d.A);
+      if(!Array.isArray(A.projects)) A.projects = defaults().projects;
+      if(!A.logos) A.logos = {};
+      if(d.ui){ UI.cur = Math.min(d.ui.cur||0, STEPS.length-1); UI.visited = new Set(d.ui.visited||[0]); }
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
+let saveT;
+function save(){
+  clearTimeout(saveT);
+  saveT = setTimeout(() => {
+    try{
+      localStorage.setItem(CONFIG.storageKey, JSON.stringify({A, ui:{cur:UI.cur, visited:[...UI.visited]}}));
+      const el = document.getElementById('save');
+      el.classList.add('on'); document.getElementById('saveTxt').textContent = 'حُفظ تلقائياً';
+      clearTimeout(save.t2); save.t2 = setTimeout(()=>el.classList.remove('on'), 1800);
+    }catch(e){}
+  }, 250);
+}
+
+/* المسارات: نستخدم | فاصلاً لأن بعض الخيارات تحتوي على نقاط */
+function getP(path){ return path.split('|').reduce((o,k)=> o==null ? undefined : o[k], A); }
+function setP(path, v){
+  const ks = path.split('|'); let o = A;
+  for(let i=0;i<ks.length-1;i++){ if(o[ks[i]]==null || typeof o[ks[i]]!=='object') o[ks[i]] = {}; o = o[ks[i]]; }
+  o[ks[ks.length-1]] = v; save();
+}
+
+/* =====================================================================
+   أدوات
+   ===================================================================== */
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const isEmpty = v => v==null || v==='' || (Array.isArray(v) && v.length===0);
+const norm = v => Array.isArray(v) ? [...v].sort() : (v==null ? '' : v);
+const same = (a,b) => JSON.stringify(norm(a)) === JSON.stringify(norm(b));
+const normDigits = s => String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+const num = v => Number(v).toLocaleString('en-US');
+const pad = n => String(n).padStart(2,'0');
+const labelOf = (f,o) => typeof f.label==='function' ? f.label(o) : f.label;
+const visible = (f,o) => !f.showIf || f.showIf(o);
+const optsOf = (f,o) => f.optionsFrom ? f.optionsFrom(o) : f.options;
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function plural(n, one, two, few, many){ return n===1?one : n===2?two : (n>=3&&n<=10)? `${n} ${few}` : `${n} ${many}`; }
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove('on'), 2600); }
+
+function fmt(f, v, o){
+  if(isEmpty(v)) return '';
+  switch(f.type){
+    case 'money': return num(v) + ' ريال';
+    case 'number': return num(v) + (f.suffix ? ' ' + f.suffix : '');
+    case 'chips': return (f.other && v===f.other && o[f.id+'__o']) ? `${v}: ${o[f.id+'__o']}` : String(v);
+    case 'multi': {
+      const d = o[f.id+'__d'] || {};
+      return v.map(x => x===f.other ? (o[f.id+'__o'] ? `${x}: ${o[f.id+'__o']}` : x) : (d[x] ? `${x} (${d[x]})` : x)).join('، ');
+    }
+    default: return String(v);
+  }
+}
+
+/* =====================================================================
+   التمرير الناعم
+   ===================================================================== */
+let lenis = null;
+function initScroll(){
+  if(window.Lenis && !REDUCED){
+    lenis = new Lenis({ autoRaf:true, lerp:0.085, smoothWheel:true, wheelMultiplier:0.95, anchors:false,
+      prevent: node => node.tagName==='TEXTAREA' || node.tagName==='SELECT' });
+  }
+  const top = document.getElementById('top');
+  const onScroll = () => top.classList.toggle('scrolled', window.scrollY > 6);
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+}
+const headH = () => document.getElementById('top').getBoundingClientRect().height;
+function scrollToY(y, immediate){
+  y = Math.max(0, y);
+  if(lenis){ lenis.resize(); lenis.scrollTo(y, {immediate:!!immediate, duration:1.05, easing:t => 1 - Math.pow(1 - t, 4), force:true}); }
+  else window.scrollTo({top:y, behavior:(immediate||REDUCED)?'auto':'smooth'});
+}
+function scrollToEl(el, extra){ if(!el) return; scrollToY(el.getBoundingClientRect().top + window.scrollY - headH() - (extra==null?20:extra)); }
+function keepScroll(y){ if(lenis) lenis.resize(); if(Math.abs(window.scrollY - y) > 1){ if(lenis) lenis.scrollTo(y, {immediate:true, force:true}); else window.scrollTo(0, y); } }
+
+/* =====================================================================
+   رسم الحقول
+   ===================================================================== */
+function chipsHTML(f, v, p, multi, opts){
+  return `<div class="chips ${multi?'multi':''} ${f.stack?'stack':''}" role="group">` + opts.map(o => {
+    const on = multi ? (v||[]).includes(o) : v===o;
+    return `<button type="button" class="chip" data-chip data-path="${esc(p)}" data-val="${esc(o)}" data-mode="${multi?'multi':'single'}"${f.max?` data-max="${f.max}"`:''}${f.other===o?' data-other="1"':''} aria-pressed="${on}"><span class="tick"></span><span dir="auto">${esc(o)}</span></button>`;
+  }).join('') + `</div>`;
+}
+
+function fieldHTML(f, o, base, inProject){
+  if(!visible(f,o)) return '';
+  const p = base + f.id, v = o[f.id], label = labelOf(f,o);
+  const empty = isEmpty(v);
+  let inner = '';
+  const ph = f.placeholder ? ` placeholder="${esc(f.placeholder)}"` : '';
+  switch(f.type){
+    case 'text': case 'email': case 'url': case 'tel': {
+      const t = {email:'email', url:'url', tel:'tel'}[f.type] || 'text';
+      const ltr = f.ltr || f.type!=='text';
+      inner = `<input class="input ${ltr?'ltr':''}" type="${t}" data-path="${esc(p)}" data-type="${f.type}" value="${esc(v||'')}"${ph} aria-label="${esc(label)}"${f.type==='tel'?' inputmode="tel" autocomplete="tel"':''}>`;
+      break;
+    }
+    case 'number': case 'money': {
+      const shown = empty ? '' : (f.type==='money' || String(v).length>3 ? num(v) : v);
+      inner = `<div class="affix"><input class="input" type="text" inputmode="numeric" data-path="${esc(p)}" data-type="${f.type}" value="${esc(shown)}"${ph} aria-label="${esc(label)}">${f.suffix?`<span class="suf">${f.suffix}</span>`:''}</div>`;
+      break;
+    }
+    case 'textarea':
+      inner = `<textarea class="input" data-lenis-prevent data-path="${esc(p)}" data-type="text" aria-label="${esc(label)}">${esc(v||'')}</textarea>`; break;
+    case 'select':
+      inner = `<select class="input" data-path="${esc(p)}" data-type="select" aria-label="${esc(label)}"><option value="">اختاروا…</option>${f.options.map(x=>`<option${x===v?' selected':''}>${esc(x)}</option>`).join('')}</select>`; break;
+    case 'chips': {
+      const opts = optsOf(f,o);
+      inner = opts.length ? chipsHTML(f, v, p, false, opts) : `<p class="hint">اختاروا الخدمات أعلاه أولاً.</p>`;
+      if(f.other && v===f.other) inner += `<div class="sub"><input class="input" data-path="${esc(p)}__o" data-type="text" value="${esc(o[f.id+'__o']||'')}" placeholder="اكتبوا هنا" aria-label="${esc(label)}"></div>`;
+      break;
+    }
+    case 'multi': {
+      inner = chipsHTML(f, v, p, true, f.options);
+      const sel = v || [], d = o[f.id+'__d'] || {};
+      const rows = sel.filter(x => x!==f.other && (f.detail || (f.detailFor && f.detailFor[x]))).map(x =>
+        `<div class="drow"><span>${esc(x)}</span><input class="input ${f.ltrDetail?'ltr':''}" data-path="${esc(p)}__d|${esc(x)}" data-type="text" value="${esc(d[x]||'')}" placeholder="${esc((f.detailFor&&f.detailFor[x])||f.detail)}" aria-label="${esc(x)}"></div>`).join('');
+      const other = (f.other && sel.includes(f.other)) ? `<input class="input" data-path="${esc(p)}__o" data-type="text" value="${esc(o[f.id+'__o']||'')}" placeholder="${esc(f.other)}: اكتبوا هنا" aria-label="${esc(f.other)}">` : '';
+      if(rows || other) inner += `<div class="sub">${rows}${other}</div>`;
+      break;
+    }
+  }
+  const cls = ['field', f.half?'half':'', f.special?'special':'', (inProject && f.req && empty)?'empty':''].join(' ');
+  return `<div class="${cls}" data-fid="${esc(f.id)}" data-req="${f.req?1:0}">
+    <span class="flabel">${esc(label)}${f.block?'<span class="req">*</span>':''}</span>
+    ${f.hint?`<p class="hint">${f.hint}</p>`:''}
+    ${f.ctx?`<div class="ctx">${f.ctx}</div>`:''}
+    ${inner}
+    ${f.block?`<div class="err">هذا الحقل مطلوب للمتابعة.</div>`:''}
+  </div>`;
+}
+
+/* =====================================================================
+   المشاريع
+   ===================================================================== */
+const qField = q => ({id:'q_'+q.id, type:'chips', stack:true, special:true, req:true, label:q.label, hint:q.hint, options:q.options, other:q.other, s:q.s});
+function projMissing(pr){
+  if(pr.include===OFF) return 0;
+  const def = byKey(pr.key) || {};
+  let n = 0;
+  PF.forEach(f => { if(f.req && visible(f,pr) && isEmpty(pr[f.id])) n++; });
+  (def.q||[]).forEach(q => { if(isEmpty(pr['q_'+q.id])) n++; });
+  return n;
+}
+function badgeHTML(pr){
+  if(pr.include===OFF) return `<span class="badge off">مستبعد</span>`;
+  const m = projMissing(pr);
+  return m ? `<span class="badge">ينقصه ${plural(m,'بيان واحد','بيانان','بيانات','بياناً')}</span>` : `<span class="badge ok">مكتمل</span>`;
+}
+function projectHTML(pr, i){
+  const def = byKey(pr.key) || {};
+  const open = UI.open.has(pr.key), off = pr.include===OFF;
+  const sub = [pr.client, pr.district].filter(Boolean).join(' · ');
+  let body = '';
+  if(open){
+    const base = `projects|${i}|`;
+    let fields = `<div class="fgrid">${fieldHTML(PF[0], pr, base, true)}</div>`;
+    if(!off) fields += (def.note?`<div class="ctx"><span class="tag">ملاحظة</span>${def.note}</div>`:'')
+        + (def.q||[]).map(q => fieldHTML(qField(q), pr, base, true)).join('')
+        + `<div class="fgrid">${PF.slice(1).map(f => fieldHTML(f, pr, base, true)).join('')}</div>`;
+    body = `<div class="pbody">${fields}${def.key?'':`<button type="button" class="btn danger" data-del="${esc(pr.key)}">حذف هذا المشروع</button>`}</div>`;
+  }
+  return `<div class="pcard ${open?'open':''} ${off?'off':''} ${UI.opening===pr.key?'opening':''}" data-card="${esc(pr.key)}">
+    <button type="button" class="phead" data-toggle="${esc(pr.key)}" aria-expanded="${open}">
+      <span class="pidx">${pad(i+1)}</span>
+      <span class="ptxt"><span class="pn">${esc(pr.name||'مشروع جديد')}</span><span class="pc">${esc(sub||'—')}</span></span>
+      ${badgeHTML(pr)}<span class="chev"></span>
+    </button>${body}</div>`;
+}
+function projectsSummary(){
+  const shown = A.projects.filter(p=>p.include!==OFF);
+  const done = shown.filter(p=>!projMissing(p)).length;
+  const n = shown.length, w = (n>=3 && n<=10) ? 'مشاريع معروضة' : 'مشروعاً معروضاً';
+  return `<span class="sum">اكتمل <b>${done}</b> من <b>${n}</b> ${w}</span><span class="pbar"><i style="width:${n?Math.round(done/n*100):0}%"></i></span>`;
+}
+
+/* =====================================================================
+   العملاء
+   ===================================================================== */
+function clientsHTML(){
+  const linked = {darco:1, liter:1, zaid:1, enma:1};
+  return `<div class="field" style="border-top:0;padding-top:0"><span class="flabel">صفة كل جهة من الجهات الواردة في الصفحة الحالية</span>
+   <div class="ltable">${LOGOS.map(l=>`<div class="lrow"><div class="ln">${esc(l.name)}${linked[l.id]?'<small>له مشروع في البروفايل</small>':''}</div>${chipsHTML({}, A.logos[l.id], 'logos|'+l.id, false, LOGO_OPTS)}</div>`).join('')}</div></div>`;
+}
+
+/* =====================================================================
+   التجميع (المراجعة والرسالة يستخدمان المصدر نفسه)
+   ===================================================================== */
+function sanitize(){
+  STEPS.forEach(s => (s.fields||[]).forEach(f => {
+    if(f.optionsFrom && A[f.id] && !f.optionsFrom(A).includes(A[f.id])) A[f.id] = '';
+  }));
+}
+function compile(){
+  sanitize();
+  const secs = []; let missing = 0, changed = 0;
+  STEPS.forEach((s, si) => {
+    if(s.custom==='review') return;
+    const sec = {si, title:s.title, rows:[]};
+    if(s.custom==='projects'){
+      sec.projects = A.projects.map(pr => {
+        const def = byKey(pr.key) || {}; const pre = (PRE.projects.find(x=>x.key===pr.key)) || {};
+        if(pr.include===OFF) return {name:pr.name, off:true};
+        const items = [];
+        if(isEmpty(pr.include)){ items.push({label:'العرض', val:'', miss:true}); missing++; }
+        (def.q||[]).forEach(q => { const f=qField(q); const v=pr[f.id]; const e=isEmpty(v); if(e) missing++; items.push({label:q.s, val:e?'':fmt(f,v,pr), miss:e, q:true}); });
+        PF.forEach(f => {
+          if(f.id==='include' || f.id==='name' || !visible(f,pr)) return;
+          const v = pr[f.id], e = isEmpty(v);
+          if(e && f.req) missing++;
+          let was = null;
+          if(pre[f.id]!==undefined && !same(pre[f.id], v)){ was = fmt(f, pre[f.id], pre) || '—'; changed++; }
+          if(!e || f.req) items.push({label:f.s, val:e?'':fmt(f,v,pr), miss:e && f.req, was});
+        });
+        let nameWas = null;
+        if(pre.name!==undefined && !same(pre.name, pr.name)){ nameWas = pre.name; changed++; }
+        return {name:pr.name||'مشروع بلا اسم', nameWas, items, miss:projMissing(pr), isNew:!def.key};
+      });
+    }
+    if(s.custom==='clients'){
+      LOGOS.forEach(l => { const v=A.logos[l.id]; const e=isEmpty(v); if(e) missing++;
+        let was=null; if(l.pre && v!==l.pre){ was=l.pre; changed++; }
+        sec.rows.push({label:l.name, val:v||'', miss:e, was}); });
+    }
+    (s.fields||[]).forEach(f => {
+      if(!visible(f,A)) return;
+      const v = A[f.id], e = isEmpty(v);
+      if(e && f.req) missing++;
+      let was = null;
+      if(f.pre!==undefined && !same(f.pre, v)){ was = fmt(f, f.pre, {}) || '—'; changed++; }
+      sec.rows.push({label:f.s||labelOf(f,A), val:e?'':fmt(f,v,A), miss:e && !!f.req, empty:e, was});
+    });
+    secs.push(sec);
+  });
+  const shown = A.projects.filter(p => p.include!==OFF);
+  const total = shown.reduce((t,p) => t + (Number(p.value)||0), 0);
+  return {secs, missing, changed, shown:shown.length, total, at:new Date()};
+}
+
+/* =====================================================================
+   شاشة المراجعة
+   ===================================================================== */
+function reviewHTML(){
+  const r = compile();
+  const stats = `<div class="stats">
+    <div class="stat hi"><b>${r.shown}</b><span>المشاريع المعروضة</span></div>
+    <div class="stat"><b>${num(r.total)}</b><span>مجموع قيمها (ريال)</span></div>
+    <div class="stat"><b>${r.missing}</b><span>أسئلة بلا إجابة</span></div>
+    <div class="stat"><b>${r.changed}</b><span>بيانات عدّلتموها</span></div></div>`;
+  const notice = r.missing
+    ? `<div class="notice warn">عدد الأسئلة التي لم تُجب: <b>${r.missing}</b>. يمكنكم الإرسال الآن وإكمالها لاحقاً معنا، لكن اكتمالها يختصر وقت التنفيذ.</div>`
+    : `<div class="notice">أجبتم عن جميع الأسئلة الأساسية. شكراً لكم.</div>`;
+  const val = row => row.val ? `${esc(row.val)}${row.was?`<span class="was">(كان: ${esc(row.was)})</span>`:''}` : (row.miss?`<span class="miss">لم تُعبّأ</span>`:`<span class="was" style="margin:0">—</span>${row.was?`<span class="was">(كان: ${esc(row.was)})</span>`:''}`);
+  const secs = r.secs.map(s => {
+    let inner = '';
+    if(s.projects){
+      inner += s.projects.map(p => p.off ? `<div class="rvp"><div class="rvp-h"><b style="color:var(--muted)">${esc(p.name)}</b><span class="badge off">مستبعد</span></div></div>`
+        : `<div class="rvp"><div class="rvp-h"><b>${esc(p.name)}</b>${p.nameWas?`<span class="was">(كان: ${esc(p.nameWas)})</span>`:''}${p.miss?`<span class="badge">ينقصه ${plural(p.miss,'بيان واحد','بيانان','بيانات','بياناً')}</span>`:`<span class="badge ok">مكتمل</span>`}</div>
+          <div class="rvp-items">${p.items.map(it=>`<span class="it ${it.miss?'m':''}"><i>${esc(it.label)}:</i> ${it.miss?'ناقص':esc(it.val)}${it.was?` <i>(كان: ${esc(it.was)})</i>`:''}</span>`).join('')}</div></div>`).join('');
+    }
+    inner += s.rows.map(row => `<div class="r"><dt>${esc(row.label)}</dt><dd>${val(row)}</dd></div>`).join('');
+    return `<section class="rv"><div class="rv-h"><h3><span class="num">${pad(s.si+1)}</span>${esc(s.title)}</h3><button type="button" class="linkbtn" data-go="${s.si}">تعديل</button></div><dl>${inner}</dl></section>`;
+  }).join('');
+  return stats + notice + secs + `
+    <label class="confirm"><input type="checkbox" id="agree"> <span>أؤكد أن البيانات صحيحة بحسب علمي، وأوافق على استخدامها في إعداد البروفايل.</span></label>
+    <input class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="sendrow"><button type="button" class="btn pri" id="send"><span>إرسال الإجابات إلى ${esc(CONFIG.agency.name)}</span><span class="arr"></span></button>
+    <button type="button" class="btn line" id="dl">تنزيل نسخة من الإجابات</button></div>
+    <div class="errbox" id="errbox"></div>`;
+}
+
+/* =====================================================================
+   رسالة البريد (HTML مضغوط ليتسع ضمن حدود خدمات الإرسال)
+   ===================================================================== */
+function emailHTML(r, compact){
+  const br = CONFIG.colors.brand, ink = CONFIG.colors.ink, ol = CONFIG.colors.olive, mu = '#6D7068', wn = '#B0531C';
+  const when = new Intl.DateTimeFormat('ar-SA-u-ca-gregory-nu-latn', {dateStyle:'full', timeStyle:'short', timeZone:'Asia/Riyadh'}).format(r.at);
+  const L = t => `<font color=${mu}>${esc(t)}</font>`;
+  const V = t => /^[A-Za-z]/.test(String(t)) ? `<span dir=ltr>${esc(t)}</span>` : esc(t);
+  const W = t => compact ? '' : ` <font color=#9A9B93 size=2>(كان: ${esc(t)})</font>`;
+  const M = `<font color=${wn}>ناقص</font>`;
+  const cell = (n, t, hi) => `<td width=25% style="padding:12px;border:1px solid ${hi?ink:'#E4E4DC'};background:${hi?ink:'#FCFCFA'}"><div style="font-size:20px;font-weight:bold;color:${hi?br:ink}">${n}</div><div style="font-size:12px;color:${hi?'#A9ACA4':mu}">${t}</div></td>`;
+  let h = `<div dir=rtl style="background:#F4F4EF;padding:20px 0;font-family:Tahoma,Arial,sans-serif;color:${ink};font-size:14px;line-height:1.75">`
+    + `<table role=presentation width=100% cellpadding=0 cellspacing=0><tr><td align=center>`
+    + `<table role=presentation dir=rtl width=660 cellpadding=0 cellspacing=0 style="width:660px;max-width:100%;background:#fff;border:1px solid #E4E4DC">`
+    + `<tr><td style="background:${ink};color:#fff;padding:22px 26px;border-bottom:4px solid ${br}"><div style="font-size:13px;font-weight:bold;color:${br}">◆ ${esc(CONFIG.agency.name)} · نموذج محتوى البروفايل</div>`
+    + `<div style="font-size:23px;font-weight:bold;margin-top:4px">${esc(CONFIG.client.name)}</div><div style="font-size:12px;color:#A9ACA4;margin-top:4px">${esc(when)}</div></td></tr>`
+    + `<tr><td style="padding:20px 26px 6px"><table width=100% cellpadding=0 cellspacing=0 style="border:1px solid #E4E4DC;background:#FCFCFA"><tr><td style="padding:14px 16px">`
+    + `<div style="font-size:12px;color:${mu}">مقدّم الإجابات</div><div style="font-size:16px;font-weight:bold">${esc(A.contact_name||'—')}${A.contact_role?` <font color=${mu} size=2>— ${esc(fmt(STEPS[0].fields[2], A.contact_role, A))}</font>`:''}</div>`
+    + `<div style="margin-top:4px"><a href="tel:${esc(A.contact_phone||'')}" style="color:${ol};text-decoration:none">${esc(A.contact_phone||'')}</a>${A.contact_email?` &nbsp;·&nbsp; <a href="mailto:${esc(A.contact_email)}" style="color:${ol};text-decoration:none">${esc(A.contact_email)}</a>`:''}</div>`
+    + `</td></tr></table></td></tr>`
+    + `<tr><td style="padding:10px 26px 4px"><table width=100% cellpadding=0 cellspacing=0 style="border-collapse:collapse;text-align:center"><tr>`
+    + cell(r.shown,'مشاريع معروضة',true) + cell(num(r.total),'مجموع القيم (ريال)') + cell(`<font color=${r.missing?wn:ol}>${r.missing}</font>`,'أسئلة بلا إجابة') + cell(r.changed,'بيانات عدّلها العميل')
+    + `</tr></table></td></tr>`;
+  r.secs.forEach((s, n) => {
+    h += `<tr><td style="padding:18px 26px 0"><div style="font-size:15px;font-weight:bold;color:${ink};border-bottom:3px solid ${br};padding-bottom:5px;margin-bottom:4px">${pad(n+1)} · ${esc(s.title)}</div>`;
+    if(s.projects){
+      s.projects.forEach((p, i) => {
+        if(p.off){ h += `<div style="padding:6px 0;color:${mu}">${i+1}. ${esc(p.name)} — مستبعد</div>`; return; }
+        const head = `<b>${i+1}. ${esc(p.name)}</b>${p.isNew?` <font color=${ol} size=2>[مشروع جديد]</font>`:''}${p.nameWas?W(p.nameWas):''}`;
+        const filled = p.items.filter(it => !it.miss).map(it => `${L(it.label+':')} ${V(it.val)}${it.was?W(it.was):''}`);
+        const miss = p.items.filter(it => it.miss).map(it => esc(it.label));
+        let body = filled.join(compact?' · ':'<br>');
+        if(miss.length) body += `${body?'<br>':''}<font color=${wn}>ناقص: ${miss.join('، ')}</font>`;
+        h += `<table width=100% cellpadding=0 cellspacing=0 style="margin:8px 0;border:1px solid #E4E4DC"><tr><td style="padding:9px 12px;background:#FAFAF6">${head}</td></tr><tr><td style="padding:8px 12px;font-size:13px">${body||'—'}</td></tr></table>`;
+      });
+    }
+    if(s.rows.length){
+      h += `<table width=100% cellpadding=7 cellspacing=0 style="font-size:13.5px">`;
+      let k = 0;
+      s.rows.forEach(row => {
+        if(compact && row.empty && !row.miss) return;
+        const v = row.val ? V(row.val) + (row.was?W(row.was):'') : (row.miss ? M : `<font color=#B0AEA8>—</font>${row.was?W(row.was):''}`);
+        h += `<tr${k++%2?'':' bgcolor=#F7F7F2'}><td width=36% valign=top>${L(row.label)}</td><td>${v}</td></tr>`;
+      });
+      h += `</table>`;
+    }
+    h += `</td></tr>`;
+  });
+  h += `<tr><td style="padding:22px 26px;font-size:12px;color:${mu}">أُرسلت هذه الرسالة تلقائياً من نموذج محتوى البروفايل. للرد على العميل استخدموا زر الرد مباشرة.</td></tr>`
+    + `</table></td></tr></table></div>`;
+  return h;
+}
+/* نسخة نصية مختصرة جداً تُستخدم فقط إن تجاوزت الرسالة حد الحجم في الخطة المجانية */
+function minimalHTML(r){
+  const f = plainFields(r);
+  return `<div dir=rtl style="font-family:Tahoma,Arial,sans-serif;font-size:13px;line-height:1.8"><b>${esc(CONFIG.client.name)} — ${esc(A.contact_name||'')} — ${esc(A.contact_phone||'')}</b><br>مشاريع معروضة: ${r.shown} · مجموع القيم: ${num(r.total)} ريال · أسئلة بلا إجابة: ${r.missing}<br>`
+    + Object.entries(f).map(([k,v]) => `<b>${esc(k)}</b>: ${esc(v).replace(/\n/g,' · ')}`).join('<br>') + `</div>`;
+}
+const emailDoc = r => `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>إجابات ${esc(CONFIG.client.name)}</title></head><body style="margin:0">${emailHTML(r,false)}</body></html>`;
+
+function plainFields(r){
+  const out = {};
+  r.secs.forEach((s, n) => {
+    if(s.projects) s.projects.forEach((p, i) => {
+      out[`${n+1}. ${s.title} — ${i+1}. ${p.name}`] = p.off ? 'مستبعد' : p.items.map(it => `${it.label}: ${it.miss?'لم تُعبّأ':it.val}${it.was?` (كان: ${it.was})`:''}`).join('\n');
+    });
+    s.rows.forEach(row => { out[`${n+1}. ${s.title} — ${row.label}`] = row.val ? row.val + (row.was?` (كان: ${row.was})`:'') : (row.miss?'لم تُعبّأ':'—'); });
+  });
+  return out;
+}
+
+/* =====================================================================
+   الإرسال
+   ===================================================================== */
+const bytes = s => new Blob([s]).size;
+function configured(){
+  return CONFIG.provider==='web3forms' ? !/^YOUR_/.test(CONFIG.web3forms.accessKey) : !/^YOUR_/.test(CONFIG.emailjs.publicKey) && !/^YOUR_/.test(CONFIG.emailjs.serviceId) && !/^YOUR_/.test(CONFIG.emailjs.templateId);
+}
+function emailjsBody(r, html){
+  return {service_id:CONFIG.emailjs.serviceId, template_id:CONFIG.emailjs.templateId, user_id:CONFIG.emailjs.publicKey,
+    template_params:{
+      subject:`نموذج البروفايل: ${CONFIG.client.name} — ${A.contact_name||''}`,
+      company:CONFIG.client.name, contact_name:A.contact_name||'', contact_phone:A.contact_phone||'',
+      reply_to:A.contact_email||CONFIG.agency.email, report_html:html }};
+}
+async function sendEmailJS(r){
+  let body = emailjsBody(r, emailHTML(r,false));
+  if(bytes(JSON.stringify(body)) > 47000) body = emailjsBody(r, emailHTML(r,true));
+  if(bytes(JSON.stringify(body)) > 47000) body = emailjsBody(r, minimalHTML(r));
+  if(bytes(JSON.stringify(body)) > 49500) throw new Error('payload-too-large');
+  const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  if(!res.ok) throw new Error(await res.text());
+}
+async function sendWeb3(r){
+  const payload = Object.assign({
+    access_key:CONFIG.web3forms.accessKey,
+    subject:`نموذج البروفايل: ${CONFIG.client.name} — ${A.contact_name||''}`,
+    from_name:`${CONFIG.agency.name} — نموذج البروفايل`,
+    replyto:A.contact_email||undefined,
+    'مقدّم الإجابات':`${A.contact_name||''} — ${A.contact_phone||''}`,
+    'الملخص':`مشاريع معروضة: ${r.shown} · مجموع القيم: ${num(r.total)} ريال · أسئلة بلا إجابة: ${r.missing} · بيانات معدّلة: ${r.changed}`
+  }, plainFields(r));
+  const res = await fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json', Accept:'application/json'}, body:JSON.stringify(payload)});
+  const j = await res.json().catch(()=>({}));
+  if(!res.ok || !j.success) throw new Error(j.message || 'web3forms-error');
+}
+function downloadCopy(){
+  const blob = new Blob([emailDoc(compile())], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `إجابات-بروفايل-${CONFIG.client.name}.html`; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+}
+async function submit(){
+  const btn = document.getElementById('send'), eb = document.getElementById('errbox');
+  eb.classList.remove('on');
+  if(!A.contact_name || !A.contact_phone){ toast('نحتاج إلى اسمكم ورقم الجوال أولاً'); go(0); return; }
+  const ag = document.getElementById('agree');
+  if(!ag.checked){ toast('يُرجى تأكيد صحة البيانات أولاً'); scrollToEl(ag.closest('.confirm'), 120); return; }
+  if(document.getElementById('hp').value){ showDone(); return; }
+  const r = compile();
+  if(!configured()){
+    eb.innerHTML = `<b>وضع المعاينة:</b> لم تُربط خدمة البريد بعد، فلم تُرسل الإجابات. فتحنا لكم معاينة الرسالة كما ستصل. (أضيفوا المفاتيح في قسم CONFIG داخل الملف.)`;
+    eb.classList.add('on'); scrollToEl(eb, 140);
+    const w = window.open('', '_blank'); if(w){ w.document.write(emailDoc(r)); w.document.close(); }
+    return;
+  }
+  btn.disabled = true; const t = btn.firstElementChild.textContent; btn.firstElementChild.textContent = 'جارٍ الإرسال…';
+  try{
+    if(CONFIG.provider==='web3forms') await sendWeb3(r); else await sendEmailJS(r);
+    A.__sentAt = new Date().toISOString(); save(); showDone();
+  }catch(err){
+    console.error(err);
+    eb.innerHTML = `تعذّر الإرسال الآن. حاولوا مرة أخرى بعد قليل، أو نزّلوا نسخة من الإجابات وأرسلوها إلينا عبر <a href="https://wa.me/${CONFIG.agency.whatsapp}" target="_blank" rel="noopener">واتساب</a> أو <a href="mailto:${CONFIG.agency.email}">البريد</a>. إجاباتكم محفوظة على هذا الجهاز ولن تضيع.`;
+    eb.classList.add('on'); scrollToEl(eb, 140);
+  }finally{ btn.disabled = false; btn.firstElementChild.textContent = t; }
+}
+async function showDone(){
+  UI.done = true;
+  const card = document.getElementById('card');
+  card.classList.add('leaving'); await wait(REDUCED?0:180);
+  stage.innerHTML = `<div class="done-wrap"><div class="done-mk">${MARK_SVG}</div>
+    <h1 class="title">وصلتنا إجاباتكم، شكراً لكم</h1>
+    <p class="lead">سيبدأ فريق ${esc(CONFIG.agency.name)} بإعداد المحتوى، وسنتواصل معكم إن احتجنا إلى أي توضيح. تبقى إجاباتكم محفوظة على هذا الجهاز إن أردتم مراجعتها.</p>
+    <div class="sendrow"><button type="button" class="btn line" id="dl">تنزيل نسخة من الإجابات</button><button type="button" class="btn ghost" data-go="${STEPS.length-1}">العودة إلى المراجعة</button></div></div>`;
+  document.getElementById('nav').style.display = 'none';
+  document.getElementById('pbar').style.width = '100%';
+  scrollToY(0, true); card.classList.remove('leaving');
+}
+
+/* =====================================================================
+   الرسم والتنقل
+   ===================================================================== */
+const stage = document.getElementById('stage');
+function sideHTML(){
+  return `<ol class="rail">${STEPS.map((s,i)=>`<li class="${i===UI.cur?'cur':''} ${UI.visited.has(i)&&i!==UI.cur?'done':''}"><button type="button" data-go="${i}"><span class="dotn">${UI.visited.has(i)&&i!==UI.cur?'✓':i+1}</span>${esc(s.nav)}</button></li>`).join('')}</ol>
+   <div class="side-card"><b>تُحفظ إجاباتكم تلقائياً</b> على هذا الجهاز والمتصفح، فيمكنكم الإغلاق والعودة لاحقاً من الرابط نفسه.<br>
+   <button type="button" class="linkbtn ${UI.resetArmed?'armed':''}" id="reset">${UI.resetArmed?'اضغطوا مرة أخرى لمسح كل الإجابات':'البدء من جديد'}</button></div>`;
+}
+function headHTML(s){
+  if(s.perks){
+    return `<div class="hero"><div class="mk">${MARK_SVG}</div>
+      <div class="eyebrow">${esc(CONFIG.agency.name)} · نموذج محتوى البروفايل</div>
+      <h1 class="title">بروفايل ${esc(CONFIG.client.name)} الجديد يبدأ من هنا</h1>
+      <p class="lead">${s.lead||''}</p>
+      <div class="perks">${s.perks.map(p=>`<div class="perk"><b>${p[0]}</b><span>${p[1]}</span></div>`).join('')}</div></div>`;
+  }
+  return `<div class="shead"><div class="bignum">${pad(UI.cur+1)}</div><div><div class="eyebrow">الخطوة ${UI.cur+1} من ${STEPS.length}</div><h1 class="title">${esc(s.title)}</h1></div></div>
+    <p class="lead">${s.lead||''}</p>`;
+}
+function render(enter){
+  UI.done = false;
+  sanitize();
+  const s = STEPS[UI.cur];
+  let body = '';
+  if(s.custom==='projects'){
+    body = `<div class="ptools">${projectsSummary()}</div>` + A.projects.map(projectHTML).join('') + `<button type="button" class="addp" id="addp">إضافة مشروع غير موجود في القائمة</button>`;
+  }else if(s.custom==='review'){
+    body = reviewHTML();
+  }else{
+    if(s.custom==='clients') body += clientsHTML();
+    body += `<div class="fgrid">${(s.fields||[]).map(f=>fieldHTML(f, A, '', false)).join('')}</div>`;
+  }
+  stage.innerHTML = headHTML(s) + body;
+  stage.classList.toggle('enter', !!enter && !REDUCED);
+  if(enter){ let i = 0; stage.querySelectorAll('.shead,.hero,.lead,.field,.pcard,.ptools,.rv,.stats,.notice,.ltable,.addp').forEach(el => { if(!el.closest('.hero') || el.classList.contains('hero')) el.style.setProperty('--i', Math.min(i++, 9)); }); clearTimeout(render.t); render.t = setTimeout(()=>stage.classList.remove('enter'), 1200); }
+  UI.opening = null;
+  document.getElementById('side').innerHTML = sideHTML();
+  document.getElementById('count').innerHTML = `<b>${pad(UI.cur+1)}</b> / ${pad(STEPS.length)}`;
+  document.getElementById('prev').style.visibility = UI.cur===0 ? 'hidden' : 'visible';
+  document.getElementById('next').style.display = s.custom==='review' ? 'none' : '';
+  document.getElementById('nextTxt').textContent = UI.cur===STEPS.length-2 ? 'مراجعة الإجابات' : (UI.cur===0 ? 'لنبدأ' : 'التالي');
+  document.getElementById('nav').style.display = '';
+  document.getElementById('pbar').style.width = ((UI.cur+1)/STEPS.length*100) + '%';
+}
+/* بصمة البنية: إن لم تتغير بعد النقر فلا داعي لإعادة الرسم */
+function signature(){
+  const s = STEPS[UI.cur];
+  const fs = (fields, o) => fields.filter(f=>visible(f,o)).map(f=>{
+    const v = o[f.id]; let x = f.id;
+    if(typeof f.label==='function') x += '~' + labelOf(f,o);
+    if(f.other && (v===f.other || (Array.isArray(v) && v.includes(f.other)))) x += '+o';
+    if(f.type==='multi' && (f.detail || f.detailFor)) x += '+d' + (v||[]).filter(t=>f.detail || (f.detailFor && f.detailFor[t])).join('/');
+    if(f.optionsFrom) x += '+f' + f.optionsFrom(o).join('/');
+    return x;
+  }).join(',');
+  if(s.custom==='projects') return A.projects.map(p => UI.open.has(p.key) ? p.key+'['+p.include+']'+fs(PF,p) : p.key).join(';');
+  return fs(s.fields||[], A);
+}
+function validate(){
+  const s = STEPS[UI.cur]; let ok = true;
+  (s.fields||[]).forEach(f => {
+    if(!f.block || !visible(f,A)) return;
+    const el = stage.querySelector(`[data-fid="${f.id}"]`);
+    const bad = isEmpty(A[f.id]) || (f.type==='tel' && String(A[f.id]).replace(/\D/g,'').length < 9);
+    if(el) el.classList.toggle('invalid', bad);
+    if(bad) ok = false;
+  });
+  if(A.contact_email && UI.cur===0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(A.contact_email)){ toast('صيغة البريد الإلكتروني غير صحيحة'); return false; }
+  if(!ok){ toast('أكملوا الحقول المطلوبة للمتابعة'); const f = stage.querySelector('.invalid'); if(f){ scrollToEl(f, 40); const inp=f.querySelector('.input'); if(inp) setTimeout(()=>inp.focus({preventScroll:true}), 350); } }
+  return ok;
+}
+async function go(i){
+  if(UI.busy) return;
+  i = Math.max(0, Math.min(STEPS.length-1, i));
+  if(i === UI.cur && stage.innerHTML && !UI.done) return;
+  if(i > UI.cur && UI.cur===0 && !validate()) return;
+  UI.busy = true;
+  const card = document.getElementById('card');
+  card.classList.add('leaving');
+  await wait(REDUCED ? 0 : 170);
+  UI.cur = i; UI.visited.add(i); UI.resetArmed = false;
+  render(true);
+  scrollToY(0, true);
+  card.classList.remove('leaving');
+  save(); UI.busy = false;
+}
+/* بعد اختيار إجابة واحدة: انزلاق هادئ إلى السؤال التالي إن كان بعيداً عن النظر */
+function glideToNext(fieldEl, chip){
+  if(!fieldEl) return;
+  const row = chip && chip.closest('.lrow');
+  const all = row ? [...stage.querySelectorAll('.lrow')] : [...stage.querySelectorAll('.field')].filter(f => !f.querySelector('.ltable'));
+  const nxt = all[all.indexOf(row || fieldEl) + 1];
+  if(!nxt || !nxt.closest('#stage')) return;
+  const r = nxt.getBoundingClientRect(), vh = window.innerHeight;
+  const bottomSafe = window.matchMedia('(max-width:980px)').matches ? 90 : 0;
+  if(r.top > vh * 0.68 - bottomSafe || r.top < headH()){
+    scrollToY(window.scrollY + r.top - vh * 0.3);
+    if(nxt.classList.contains('field')){ nxt.classList.remove('flash'); void nxt.offsetWidth; nxt.classList.add('flash'); }
+  }
+}
+
+/* أحداث */
+document.getElementById('next').addEventListener('click', () => go(UI.cur+1));
+document.getElementById('prev').addEventListener('click', () => go(UI.cur-1));
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'); if(g){ go(+g.dataset.go); return; }
+  if(e.target.closest('#reset')){
+    if(!UI.resetArmed){ UI.resetArmed = true; document.getElementById('side').innerHTML = sideHTML(); return; }
+    try{ localStorage.removeItem(CONFIG.storageKey); }catch(_){}
+    A = defaults(); UI.visited = new Set([0]); UI.open.clear(); UI.resetArmed = false; UI.cur = -1; go(0); toast('بدأنا من جديد'); return;
+  }
+  if(e.target.closest('#send')){ submit(); return; }
+  if(e.target.closest('#dl')){ downloadCopy(); return; }
+});
+stage.addEventListener('click', e => {
+  const chip = e.target.closest('[data-chip]');
+  if(chip){
+    const path = chip.dataset.path, val = chip.dataset.val, multi = chip.dataset.mode==='multi';
+    const before = signature();
+    let selected;
+    if(multi){
+      const arr = [...(getP(path)||[])]; const i = arr.indexOf(val);
+      if(i>-1) arr.splice(i,1);
+      else { const max = +chip.dataset.max||0; if(max && arr.length>=max){ toast(`يمكن اختيار ${max} كحد أقصى`); return; } arr.push(val); }
+      setP(path, arr); selected = arr.includes(val);
+      chip.setAttribute('aria-pressed', String(selected));
+    }else{
+      selected = getP(path)!==val; setP(path, selected ? val : '');
+      chip.parentElement.querySelectorAll('[data-chip]').forEach(b => b.setAttribute('aria-pressed', String(b===chip && selected)));
+    }
+    const fieldEl = chip.closest('.field');
+    if(fieldEl) fieldEl.classList.remove('invalid');
+    const m = path.match(/^projects\|(\d+)\|/);
+    if(signature() !== before){
+      const y = window.scrollY; render(false); keepScroll(y);
+      const again = stage.querySelector(`[data-chip][data-path="${CSS.escape(path)}"][data-val="${CSS.escape(val)}"]`);
+      if(again) again.focus({preventScroll:true});
+      if(selected && chip.dataset.other){ const o = again && again.closest('.field').querySelector('.sub .input'); if(o) setTimeout(()=>o.focus({preventScroll:true}), 60); }
+      else if(selected && !multi && again) glideToNext(again.closest('.field'), again);
+    }else{
+      if(m) refreshCard(+m[1], fieldEl, path);
+      if(selected && !multi && !chip.dataset.other) glideToNext(fieldEl, chip);
+    }
+    return;
+  }
+  const tg = e.target.closest('[data-toggle]');
+  if(tg){
+    const k = tg.dataset.toggle, wasOpen = UI.open.has(k);
+    const y = window.scrollY;
+    UI.open.clear();
+    if(!wasOpen){ UI.open.add(k); UI.opening = k; }
+    render(false); keepScroll(y);
+    const card = stage.querySelector(`[data-card="${CSS.escape(k)}"]`);
+    if(card && !wasOpen) requestAnimationFrame(()=>scrollToEl(card, 64));
+    return;
+  }
+  if(e.target.closest('#addp')){
+    const key = 'new_' + Date.now();
+    A.projects.push({key, include:'يُعرض', city:'الرياض'}); UI.open.clear(); UI.open.add(key); UI.opening = key; save();
+    const y = window.scrollY; render(false); keepScroll(y);
+    const card = stage.querySelector(`[data-card="${key}"]`);
+    if(card){ requestAnimationFrame(()=>scrollToEl(card, 64)); const f=card.querySelector('[data-fid="name"] .input'); if(f) setTimeout(()=>f.focus({preventScroll:true}), 700); }
+    return;
+  }
+  const del = e.target.closest('[data-del]');
+  if(del){ A.projects = A.projects.filter(p => p.key!==del.dataset.del); UI.open.clear(); save(); const y=window.scrollY; render(false); keepScroll(y); toast('حُذف المشروع'); }
+});
+function refreshCard(i, fw, path){
+  const pr = A.projects[i], card = stage.querySelector(`[data-card="${CSS.escape(pr.key)}"]`);
+  if(!card) return;
+  card.querySelector('.badge').outerHTML = badgeHTML(pr);
+  card.querySelector('.pn').textContent = pr.name || 'مشروع جديد';
+  card.querySelector('.pc').textContent = [pr.client, pr.district].filter(Boolean).join(' · ') || '—';
+  if(fw && fw.dataset.req==='1' && !fw.classList.contains('special')) fw.classList.toggle('empty', isEmpty(getP(path)));
+  const sum = stage.querySelector('.ptools'); if(sum) sum.innerHTML = projectsSummary();
+}
+stage.addEventListener('input', e => {
+  const el = e.target.closest('[data-path]'); if(!el || el.dataset.chip!==undefined) return;
+  const path = el.dataset.path, t = el.dataset.type;
+  let v = el.value;
+  if(t==='money' || t==='number'){
+    const d = normDigits(v).replace(/[^\d]/g,'');
+    setP(path, d);
+    if(t==='money' || d.length>3){ const nv = d ? num(d) : ''; if(nv!==el.value){ el.value = nv; el.setSelectionRange(nv.length, nv.length); } }
+    else if(d!==el.value) el.value = d;
+  }else if(t==='tel'){ v = normDigits(v); if(v!==el.value) el.value = v; setP(path, v.trim()); }
+  else if(t==='select'){ return; }
+  else setP(path, v);
+  const fw = el.closest('.field'); if(fw) fw.classList.remove('invalid');
+  const m = path.match(/^projects\|(\d+)\|/);
+  if(m) refreshCard(+m[1], fw, path);
+});
+stage.addEventListener('change', e => {
+  const el = e.target.closest('select[data-path]'); if(!el) return;
+  const before = signature();
+  setP(el.dataset.path, el.value);
+  const m = el.dataset.path.match(/^projects\|(\d+)\|/);
+  if(signature() !== before){ const y = window.scrollY; render(false); keepScroll(y); }
+  else if(m) refreshCard(+m[1], el.closest('.field'), el.dataset.path);
+});
+stage.addEventListener('keydown', e => {
+  if(e.key==='Enter' && e.target.matches('input.input') && STEPS[UI.cur].custom!=='review'){ e.preventDefault(); go(UI.cur+1); }
+});
+
+/* بدء التشغيل */
+(function init(){
+  const root = document.documentElement.style;
+  root.setProperty('--lime', CONFIG.colors.brand); root.setProperty('--ink', CONFIG.colors.ink); root.setProperty('--olive', CONFIG.colors.olive);
+  document.getElementById('logo').innerHTML = CONFIG.agency.logo ? `<img src="${esc(CONFIG.agency.logo)}" alt="${esc(CONFIG.agency.name)}">` : LOGO_SVG;
+  document.getElementById('topTitle').innerHTML = `نموذج محتوى البروفايل · <b>${esc(CONFIG.client.name)}</b>`;
+  document.getElementById('foot').innerHTML = `${MARK_SVG}<span>أعدّته ${esc(CONFIG.agency.name)} لإعداد بروفايل ${esc(CONFIG.client.name)}. تبقى بياناتكم على جهازكم حتى تضغطوا «إرسال».</span>`;
+  if(location.hash==='#preview-email'){ load(); const html = emailDoc(compile()); document.addEventListener('DOMContentLoaded', () => { document.open(); document.write(html); document.close(); }); return; }
+  const resumed = load();
+  initScroll();
+  render(true);
+  if(resumed && A.contact_name) setTimeout(()=>toast(`مرحباً ${A.contact_name}، تابعوا من حيث توقفتم`), 500);
+})();
+</script>
+</body>
+</html>
